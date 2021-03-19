@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ussd4noobs/helpers/helper.dart';
+import 'package:ussd4noobs/helpers/helper.funtions.dart';
 
 class CopyRigth extends StatelessWidget {
   @override
@@ -11,7 +11,7 @@ class CopyRigth extends StatelessWidget {
         style: TextStyle(
             fontSize: 14,
             fontFamily: 'Fressia',
-            color: Helper.colorFromHex('#212121')),
+            color: HelperFunctions.colorFromHex('#212121')),
         textAlign: TextAlign.center,
       ),
     );

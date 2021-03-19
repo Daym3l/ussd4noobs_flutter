@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:ussd4noobs/helpers/helper.dart';
-import 'package:ussd4noobs/pages/splash.dart';
+import 'package:ussd4noobs/helpers/helper.colors.dart';
+import 'package:ussd4noobs/helpers/helper.funtions.dart';
+import 'package:ussd4noobs/pages/page.home.dart';
+import 'package:ussd4noobs/pages/page.splash.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,16 +14,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Ussd4Noobs',
+      initialRoute: '/',
       theme: ThemeData(
-          brightness: Brightness.light,
-          primarySwatch: Colors.green,
-          backgroundColor: Helper.colorFromHex('#00796b'),
-          dividerColor: Helper.colorFromHex('#7E757575'),
-          accentColor: Helper.colorFromHex('#1976d2'),
-          buttonColor: Helper.colorFromHex('#1976d2')),
-      routes: {'/': (BuildContext context) => Splash()},
+          primaryColor: ussd_PrimaryColor,
+          accentColor: ussd_AccentColor,
+          fontFamily: 'Poppins'),
+      routes: {
+        '/': (BuildContext context) => SplashPage(),
+        'home': (BuildContext context) => HomePage()
+      },
       onUnknownRoute: (settings) {
-        return MaterialPageRoute(builder: (BuildContext context) => Splash());
+        return MaterialPageRoute(builder: (BuildContext context) => HomePage());
       },
     );
   }

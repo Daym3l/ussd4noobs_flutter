@@ -1,21 +1,25 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
-import 'package:ussd4noobs/widgets/widget.copyright.dart';
-import 'package:ussd4noobs/widgets/widget.title.dart';
+import 'package:ussd4noobs/widgets/text/widget.copyright.dart';
+import 'package:ussd4noobs/widgets/text/widget.AppTitleFormat.dart';
 import 'package:package_info/package_info.dart';
 
-class Splash extends StatefulWidget {
+class SplashPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return _Splash();
   }
 }
 
-class _Splash extends State<Splash> {
+class _Splash extends State<SplashPage> {
   String _version = "";
   @override
   void initState() {
     super.initState();
     _getVersion();
+    new Future.delayed(const Duration(seconds: 3),
+        () => Navigator.pushReplacementNamed(context, '/home'));
   }
 
   Future<void> _getVersion() async {
@@ -33,7 +37,7 @@ class _Splash extends State<Splash> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Theme.of(context).primaryColor,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -48,10 +52,10 @@ class _Splash extends State<Splash> {
                   ),
                 ),
                 Center(
-                  child: FormatTitle('Ussd4Noobs'),
+                  child: AppTitleFormat('Ussd4Noobs'),
                 ),
                 Center(
-                  child: FormatTitle(_version, 20.0),
+                  child: AppTitleFormat(_version, 20.0),
                 ),
               ],
             ),

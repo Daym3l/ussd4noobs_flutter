@@ -26,6 +26,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_launcher_icons: "^0.8.0"
   package_info: ^2.0.0
+  percent_indicator: ^2.1.9+1
 
 flutter_icons:
   android: true
@@ -72,6 +73,15 @@ flutter:
       fonts:
         - asset: assets/fonts/Fressia.ttf
           style: normal
+    - family: Bebas
+      fonts:
+        - asset: assets/fonts/Bebas-Regular.ttf
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Regular.ttf
+        - asset: assets/fonts/Poppins-Bold.ttf
+          weight: 700
+          
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
