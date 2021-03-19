@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ussd4noobs/pages/tab.planes.dart';
 import 'package:ussd4noobs/pages/tab.saldos.dart';
 import 'package:ussd4noobs/widgets/text/widget.appBarTitle.dart';
 import 'package:ussd4noobs/widgets/text/widget.AppTitleFormat.dart';
@@ -24,18 +25,21 @@ class HomePage extends StatelessWidget {
                 text: 'Saldos',
               ),
               Tab(
-                icon: Icon(Icons.list),
+                icon: Icon(Icons.storefront),
                 text: 'Planes',
               ),
               Tab(
-                icon: Icon(Icons.compare_arrows_sharp),
+                icon: Icon(
+                  Icons.compare_arrows_sharp,
+                  size: 28,
+                ),
                 text: 'Transferencia',
               )
             ],
           ),
         ),
         body: TabBarView(
-          children: [TabSaldos(), Container(), Container()],
+          children: [TabSaldos(), TabPlanes(), Container()],
         ),
       ),
     );

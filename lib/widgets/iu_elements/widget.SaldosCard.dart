@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:ussd4noobs/widgets/text/wideget.subtitle.dart';
 
-class PlanesCard extends StatelessWidget {
+class SaldosCard extends StatelessWidget {
   final String title;
   final double valor;
   final int vence;
@@ -11,7 +11,7 @@ class PlanesCard extends StatelessWidget {
   final double plan;
   final String prefix;
 
-  PlanesCard(
+  SaldosCard(
       {Key key,
       @required this.title,
       @required this.valor,

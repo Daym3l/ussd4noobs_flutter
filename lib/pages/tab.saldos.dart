@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ussd4noobs/widgets/iu_elements/widget.PlanesCard.dart';
+import 'package:ussd4noobs/widgets/iu_elements/widget.SaldosCard.dart';
 import 'package:ussd4noobs/widgets/text/wideget.Title.dart';
 import 'package:ussd4noobs/widgets/text/wideget.subtitle.dart';
 import 'package:ussd4noobs/widgets/text/widget.formatSaldo.dart';
@@ -15,10 +15,18 @@ class TabSaldos extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              FormatSaldo('1960.09'),
               Container(
-                width: 70,
-                height: 70,
-                padding: EdgeInsets.all(15),
+                padding: EdgeInsets.fromLTRB(50, 0, 50, 0),
+                width: MediaQuery.of(context).size.width,
+                child: Column(
+                  children: [SubtitleText('Su saldo vence el 25/12/2021.', 14)],
+                ),
+              ),
+              Padding(padding: EdgeInsets.only(top: 5)),
+              Container(
+                width: 50,
+                height: 50,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(100),
                   color: Theme.of(context).primaryColor.withAlpha(50),
@@ -31,15 +39,6 @@ class TabSaldos extends StatelessWidget {
                   onPressed: () {
                     print('Reload Saldo');
                   },
-                ),
-              ),
-              Padding(padding: EdgeInsets.only(top: 5)),
-              FormatSaldo('1960.09'),
-              Container(
-                padding: EdgeInsets.fromLTRB(50, 0, 50, 0),
-                width: MediaQuery.of(context).size.width,
-                child: Column(
-                  children: [SubtitleText('Su saldo vence el 25/12/2021.', 14)],
                 ),
               ),
               Divider(
@@ -77,32 +76,32 @@ class TabSaldos extends StatelessWidget {
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
                   children: [
-                    PlanesCard(
+                    SaldosCard(
                         title: 'Datos',
                         valor: 1.6,
                         plan: 14,
                         vence: 28,
                         icon: Icon(
                           Icons.network_wifi,
-                          color: Colors.blueGrey,
+                          color: Colors.orange,
                           size: 35,
                         ),
                         prefix: 'GB',
-                        color: Colors.blueGrey),
-                    PlanesCard(
-                        title: 'Minutos',
+                        color: Colors.orange),
+                    SaldosCard(
+                        title: 'Voz',
                         valor: 0,
                         plan: 0,
                         vence: 0,
                         icon: Icon(
-                          Icons.phone,
+                          Icons.mic,
                           color: Colors.blue,
                           size: 35,
                         ),
-                        prefix: 'Min',
+                        prefix: 'Min.',
                         color: Colors.blue),
-                    PlanesCard(
-                        title: 'Mensajes',
+                    SaldosCard(
+                        title: 'SMS',
                         valor: 8,
                         plan: 10,
                         vence: 5,
