@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ussd4noobs/pages/tab.planes.dart';
 import 'package:ussd4noobs/pages/tab.saldos.dart';
+import 'package:ussd4noobs/pages/tab.tranferencia.dart';
 import 'package:ussd4noobs/widgets/text/widget.appBarTitle.dart';
 import 'package:ussd4noobs/widgets/text/widget.AppTitleFormat.dart';
 
@@ -33,13 +34,13 @@ class HomePage extends StatelessWidget {
                   Icons.compare_arrows_sharp,
                   size: 28,
                 ),
-                text: 'Transferencia',
+                text: 'Operaciones',
               )
             ],
           ),
         ),
         body: TabBarView(
-          children: [TabSaldos(), TabPlanes(), Container()],
+          children: [TabSaldos(), TabPlanes(), TabTraferencia()],
         ),
       ),
     );
