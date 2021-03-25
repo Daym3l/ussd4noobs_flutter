@@ -28,6 +28,10 @@ dependencies:
   package_info: ^2.0.0
   percent_indicator: ^2.1.9+1
   mask_text_input_formatter: ^1.2.1
+  scoped_model: ^1.1.0
+  ussd_service: ^0.1.0+4
+  shared_preferences: ^2.0.5
+  permission_handler: ^6.1.1
 
 
 flutter_icons:
