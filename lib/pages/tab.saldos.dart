@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
+import 'package:ussd4noobs/helpers/helper.colors.dart';
 import 'package:ussd4noobs/models/model.main.dart';
 import 'package:ussd4noobs/widgets/iu_elements/widget.SaldosCard.dart';
 import 'package:ussd4noobs/widgets/iu_elements/widget.Spinner.dart';
@@ -34,7 +35,7 @@ class TabSaldos extends StatelessWidget {
                   ),
                   Padding(padding: EdgeInsets.only(top: 5)),
                   model.getLoading
-                      ? Spiner('Solicitando Saldo..')
+                      ? Spiner('Solicitando Saldo ...')
                       : Container(
                           width: 50,
                           height: 50,
@@ -47,8 +48,19 @@ class TabSaldos extends StatelessWidget {
                               Icons.refresh,
                               color: Theme.of(context).accentColor,
                             ),
-                            onPressed: () {
-                              model.makeMyCall(type: 1, ussdcode: '*222#');
+                            onPressed: () async {
+                              bool success = await model.makeMyCall(
+                                  type: 1, ussdcode: '*222#');
+                              if (!success) {
+                                final snackBar = SnackBar(
+                                  elevation: 6.0,
+                                  backgroundColor: ussd_ErrorColor,
+                                  content: Text(
+                                      'Error al ejecutar código MMI. Esto suele cuando existe problemas con la cobertura.'),
+                                );
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(snackBar);
+                              }
                             },
                           ),
                         ),
@@ -65,8 +77,7 @@ class TabSaldos extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 TitleText('Bonificacion de:'),
-                                SubtitleText(
-                                    'Datos.cu 289 MB vence: 02/04/21.', 14)
+                                SubtitleText(model.BonoPrincipal, 16)
                               ],
                             ))
                       ],

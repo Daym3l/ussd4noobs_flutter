@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 
 class Bono {
   final String valor;
-  final String vence;
 
   Bono({
     @required this.valor,
-    @required this.vence,
   });
+
+  Bono.fromJson(Map<String, dynamic> json) : valor = json['valor'];
+
+  Map<String, dynamic> toJson() => {'valor': valor};
 }

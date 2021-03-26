@@ -20,6 +20,13 @@ class _MyApp extends State<MyApp> {
   final MainModel _mainModel = MainModel();
 
   @override
+  void initState() {
+    _mainModel.getSaldo();
+    _mainModel.getBono();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return ScopedModel(
       model: _mainModel,
