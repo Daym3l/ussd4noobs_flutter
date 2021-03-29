@@ -28,14 +28,14 @@ class TabSaldos extends StatelessWidget {
                     child: Column(
                       children: [
                         SubtitleText(
-                            'Linea activa hasta el ${model.VencePrincipal}.',
+                            'Línea activa hasta el ${model.VencePrincipal}.',
                             14)
                       ],
                     ),
                   ),
                   Padding(padding: EdgeInsets.only(top: 5)),
                   model.getLoading
-                      ? Spiner('Solicitando Saldo ...')
+                      ? Spiner('Ejecutando código USSD...')
                       : Container(
                           width: 50,
                           height: 50,
@@ -50,7 +50,7 @@ class TabSaldos extends StatelessWidget {
                             ),
                             onPressed: () async {
                               bool success = await model.makeMyCall(
-                                  type: 1, ussdcode: '*222#');
+                                  type: 'Saldo', ussdcode: '*222#');
                               if (!success) {
                                 final snackBar = SnackBar(
                                   elevation: 6.0,
@@ -100,18 +100,21 @@ class TabSaldos extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       children: [
                         SaldosCard(
+                            model: model,
                             title: 'Datos',
-                            valor: 1.6,
-                            plan: 14,
-                            vence: 28,
+                            valor: model.DatosPrincipal,
+                            plan: model.DatosPlan,
+                            vence: model.VenceDatosDias,
                             icon: Icon(
                               Icons.network_wifi,
                               color: Colors.orange,
                               size: 35,
                             ),
                             prefix: 'GB',
+                            ussdcode: '*222*328#',
                             color: Colors.orange),
                         SaldosCard(
+                            model: model,
                             title: 'Voz',
                             valor: 0,
                             plan: 0,
@@ -122,8 +125,10 @@ class TabSaldos extends StatelessWidget {
                               size: 35,
                             ),
                             prefix: 'Min.',
+                            ussdcode: '*222*869#',
                             color: Colors.blue),
                         SaldosCard(
+                            model: model,
                             title: 'SMS',
                             valor: 8,
                             plan: 10,
@@ -134,6 +139,7 @@ class TabSaldos extends StatelessWidget {
                               size: 35,
                             ),
                             prefix: 'SMS',
+                            ussdcode: '*222*767#',
                             color: Colors.green)
                       ],
                     ),

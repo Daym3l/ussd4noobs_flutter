@@ -23,6 +23,7 @@ class _MyApp extends State<MyApp> {
   void initState() {
     _mainModel.getSaldo();
     _mainModel.getBono();
+    _mainModel.getDatos();
     super.initState();
   }
 

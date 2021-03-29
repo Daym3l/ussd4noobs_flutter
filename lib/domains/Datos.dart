@@ -3,14 +3,22 @@ import 'package:flutter/material.dart';
 class Datos {
   final double valor;
   final double plan;
-  final String prefix;
   final int vence;
-  final bool active;
 
-  Datos(
-      {@required this.valor,
-      @required this.plan,
-      @required this.prefix,
-      @required this.vence,
-      @required this.active});
+  Datos({
+    @required this.valor,
+    @required this.plan,
+    @required this.vence,
+  });
+
+  Datos.fromJson(Map<String, dynamic> json)
+      : valor = json['valor'],
+        plan = json['plan'],
+        vence = json['vence'];
+
+  Map<String, dynamic> toJson() => {
+        'valor': valor,
+        'plan': plan,
+        'vence': vence,
+      };
 }
