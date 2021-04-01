@@ -94,7 +94,8 @@ class _TabTraferenciaState extends State<TabTraferencia> {
                         color: Colors.white,
                       ),
                       onPressed: () {
-                        print('Reload Saldo');
+                        controllerSaldo.text;
+                        print(controllerSaldo.text);
                       },
                     ),
                   ),

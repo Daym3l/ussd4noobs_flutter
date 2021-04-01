@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:scoped_model/scoped_model.dart';
+import 'package:ussd/ussd.dart';
 import 'package:ussd4noobs/domains/Bono.dart';
 import 'package:ussd4noobs/domains/Datos.dart';
 import 'package:ussd4noobs/domains/Saldo.dart';
-import 'package:ussd4noobs/helpers/helper.funtions.dart';
+import 'package:ussd4noobs/domains/Sms.dart';
+import 'package:ussd4noobs/domains/Voz.dart';
+
 import 'package:ussd4noobs/helpers/helper.sharedPref.dart';
 import 'package:ussd_service/ussd_service.dart';
 
 class ConectedModel extends Model {
   Saldo _saldo = Saldo(saldo: 0.0, vencimiento: '1/1/2021');
   Bono _bono = Bono(valor: " ");
-  Datos _datos = Datos(valor: 0.0, plan: 14.0, vence: 0);
+  Datos _datos = Datos(valor: 0.0, plan: 0.0, vence: 0, prefix: 'MB');
+  Voz _voz = Voz(valor: '00:00:00', plan: 0.0, vence: 0);
+  Sms _sms = Sms(valor: '0', plan: 0.0, vence: 0);
 
   bool _isLoaing = false;
   SharedPref _pref = SharedPref();
@@ -24,6 +29,21 @@ class ConectedModel extends Model {
     var phoneStatus = await Permission.phone.status;
     if (!phoneStatus.isGranted) {
       await Permission.phone.request();
+    }
+  }
+
+  Future<void> buyPlan({
+    @required String ussdcode,
+  }) async {
+    await _checkPermision_call();
+
+    if (await Permission.phone.isGranted) {
+      notifyListeners();
+      try {
+        Ussd.runUssd(ussdcode);
+      } catch (e) {
+        debugPrint("error! code: ${e.code} - message: ${e.message}");
+      }
     }
   }
 
@@ -52,21 +72,20 @@ class ConectedModel extends Model {
             break;
           case 'Datos':
             {
-              List<String> res = ussdResponseMessage.split(" ");
-              print(res);
-              if (res.length == 8) {
-                _datos = Datos(
-                    valor: HelperFunctions.convertToGB(res[3], res[4]),
-                    plan: 2.5,
-                    vence: int.parse(res[6]));
+              setDatosPrincipal(ussdResponseMessage);
+            }
+            break;
+          case 'Voz':
+            {
+              setVozPrincipal(ussdResponseMessage);
+            }
+            break;
+          case 'SMS':
+            {
+              {
+                setSmsPrincipal(ussdResponseMessage);
               }
-              if (res.length == 9) {
-                _datos = Datos(
-                    valor: HelperFunctions.convertToGB(res[4], res[5]),
-                    plan: 2.5,
-                    vence: int.parse(res[7]));
-              }
-              _pref.save("datos", _datos);
+              break;
             }
             break;
           default:
@@ -75,14 +94,61 @@ class ConectedModel extends Model {
             }
         }
       } catch (e) {
-        debugPrint("error! code: ${e.code} - message: ${e.message}");
         _isLoaing = false;
         success = false;
+        debugPrint("error! code: ${e.code} - message: ${e.message}");
       }
     }
     _isLoaing = false;
     notifyListeners();
     return success;
+  }
+
+  void setSmsPrincipal(String ussdResponseMessage) {
+    List<String> res = ussdResponseMessage.split(" ");
+
+    if (res[2] == "adquirir") {
+      _sms = Sms(valor: '0', plan: 0, vence: 0);
+    } else {
+      _sms = Sms(valor: res[3], plan: _sms.plan, vence: int.parse(res[7]));
+    }
+    _pref.save("sms", _sms);
+  }
+
+  void setVozPrincipal(String ussdResponseMessage) {
+    List<String> res = ussdResponseMessage.split(" ");
+
+    if (res[2] == "adquirir") {
+      _voz = Voz(valor: '00:00:00', plan: 0.0, vence: 0);
+    } else {
+      _voz = Voz(valor: res[3], plan: 0.0, vence: int.parse(res[7]));
+    }
+    _pref.save("voz", _voz);
+  }
+
+  void setDatosPrincipal(String ussdResponseMessage) async {
+    List<String> res = ussdResponseMessage.split(" ");
+
+    if (res[4] == "adquirir" && res[5] == "adquirir") {
+      _datos = Datos(valor: 0.0, plan: 0.0, vence: 0, prefix: 'MB');
+    } else {
+      if (res.length == 8) {
+        _datos = Datos(
+            valor: double.parse(res[3]),
+            plan: _datos.plan,
+            prefix: res[4],
+            vence: int.parse(res[6]));
+      }
+      if (res.length == 9) {
+        _datos = Datos(
+            valor: double.parse(res[4]),
+            plan: _datos.plan,
+            prefix: res[5],
+            vence: int.parse(res[7]));
+      }
+    }
+
+    _pref.save("datos", _datos);
   }
 
   Future setSaldoPrincipal(
@@ -155,6 +221,10 @@ class DatosModel extends ConectedModel {
     return _datos.vence;
   }
 
+  get PrefixDatos {
+    return _datos.prefix;
+  }
+
   getDatos() async {
     try {
       _datos = Datos.fromJson(await _pref.read("datos"));
@@ -165,6 +235,48 @@ class DatosModel extends ConectedModel {
   }
 }
 
-class VozModel extends ConectedModel {}
+class VozModel extends ConectedModel {
+  get VozPrincipal {
+    return _voz.valor;
+  }
 
-class SmsModel extends ConectedModel {}
+  get VozPlan {
+    return _voz.plan;
+  }
+
+  get VenceVozDias {
+    return _voz.vence;
+  }
+
+  getVoz() async {
+    try {
+      _voz = Voz.fromJson(await _pref.read("voz"));
+      notifyListeners();
+    } catch (Excepetion) {
+      debugPrint("error on Pref Voz! ");
+    }
+  }
+}
+
+class SmsModel extends ConectedModel {
+  get SmsPrincipal {
+    return _sms.valor;
+  }
+
+  get SmsPlan {
+    return _sms.plan;
+  }
+
+  get VenceSmsDias {
+    return _sms.vence;
+  }
+
+  getSms() async {
+    try {
+      _sms = Sms.fromJson(await _pref.read("sms"));
+      notifyListeners();
+    } catch (Excepetion) {
+      debugPrint("error on Pref Sms! ");
+    }
+  }
+}

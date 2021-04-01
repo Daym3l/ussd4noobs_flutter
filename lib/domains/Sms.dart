@@ -1,16 +1,24 @@
 import 'package:flutter/material.dart';
 
 class Sms {
-  final int valor;
-  final int plan;
-  final String prefix;
+  final String valor;
+  final double plan;
   final int vence;
-  final bool active;
 
-  Sms(
-      {@required this.valor,
-      @required this.plan,
-      @required this.prefix,
-      @required this.vence,
-      @required this.active});
+  Sms({
+    @required this.valor,
+    @required this.plan,
+    @required this.vence,
+  });
+
+  Sms.fromJson(Map<String, dynamic> json)
+      : valor = json['valor'],
+        plan = json['plan'],
+        vence = json['vence'];
+
+  Map<String, dynamic> toJson() => {
+        'valor': valor,
+        'plan': plan,
+        'vence': vence,
+      };
 }

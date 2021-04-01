@@ -110,15 +110,15 @@ class TabSaldos extends StatelessWidget {
                               color: Colors.orange,
                               size: 35,
                             ),
-                            prefix: 'GB',
+                            prefix: model.PrefixDatos,
                             ussdcode: '*222*328#',
                             color: Colors.orange),
                         SaldosCard(
                             model: model,
                             title: 'Voz',
-                            valor: 0,
-                            plan: 0,
-                            vence: 0,
+                            valor: model.VozPrincipal,
+                            plan: model.VozPlan,
+                            vence: model.VenceVozDias,
                             icon: Icon(
                               Icons.mic,
                               color: Colors.blue,
@@ -130,9 +130,9 @@ class TabSaldos extends StatelessWidget {
                         SaldosCard(
                             model: model,
                             title: 'SMS',
-                            valor: 8,
-                            plan: 10,
-                            vence: 5,
+                            valor: model.SmsPrincipal,
+                            plan: model.SmsPlan,
+                            vence: model.VenceSmsDias,
                             icon: Icon(
                               Icons.message,
                               color: Colors.green,

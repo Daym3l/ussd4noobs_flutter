@@ -5,14 +5,14 @@ import 'package:ussd4noobs/widgets/text/wideget.subtitle.dart';
 
 class SaldosCard extends StatelessWidget {
   final String title;
-  final double valor;
+  final dynamic valor;
   final int vence;
   final Icon icon;
   final Color color;
   final double plan;
   final String prefix;
   final String ussdcode;
-  MainModel model;
+  final MainModel model;
 
   SaldosCard(
       {Key key,
@@ -70,7 +70,7 @@ class SaldosCard extends StatelessWidget {
             CircularPercentIndicator(
               radius: 80.0,
               lineWidth: 9,
-              percent: vence == 0 ? 0 : (plan - valor) / plan,
+              percent: vence == 0 ? 0 : (30 - vence) / 30,
               circularStrokeCap: CircularStrokeCap.round,
               center: icon,
               progressColor: color,
@@ -84,7 +84,7 @@ class SaldosCard extends StatelessWidget {
                       fontSize: 20, color: Theme.of(context).accentColor),
                 ),
                 TextSpan(
-                  text: ' / ' + plan.toString() + ' $prefix',
+                  text: ' $prefix',
                   style: TextStyle(
                       color: Colors.grey,
                       fontWeight: FontWeight.bold,

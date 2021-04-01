@@ -1,21 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:scoped_model/scoped_model.dart';
+import 'package:ussd4noobs/models/model.main.dart';
 import 'package:ussd4noobs/widgets/text/wideget.Title.dart';
 import 'package:ussd4noobs/widgets/text/wideget.subtitle.dart';
 
 class PlanTile extends StatelessWidget {
   final String title;
   final String subtitle;
-  final Function action;
+  final String type;
+  final String ussdCode;
+  final double plan;
 
   PlanTile(
       {Key key,
       @required this.title,
       @required this.subtitle,
-      @required this.action})
+      @required this.type,
+      @required this.ussdCode,
+      @required this.plan})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      key: key,
       title: TitleText(title),
       subtitle: SubtitleText('$subtitle', 16),
       trailing: Container(
@@ -25,13 +32,18 @@ class PlanTile extends StatelessWidget {
           borderRadius: BorderRadius.circular(100),
           color: Theme.of(context).primaryColor.withAlpha(50),
         ),
-        child: IconButton(
-          icon: Icon(
-            Icons.arrow_forward_ios,
-            color: Theme.of(context).accentColor,
-          ),
-          onPressed: action,
-        ),
+        child: ScopedModelDescendant(
+            builder: (BuildContext context, Widget child, MainModel model) {
+          return IconButton(
+            icon: Icon(
+              Icons.arrow_forward_ios,
+              color: Theme.of(context).accentColor,
+            ),
+            onPressed: () {
+              model.buyPlan(ussdcode: ussdCode);
+            },
+          );
+        }),
       ),
     );
   }

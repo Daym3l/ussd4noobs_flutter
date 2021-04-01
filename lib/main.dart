@@ -24,6 +24,8 @@ class _MyApp extends State<MyApp> {
     _mainModel.getSaldo();
     _mainModel.getBono();
     _mainModel.getDatos();
+    _mainModel.getVoz();
+    _mainModel.getSms();
     super.initState();
   }
 

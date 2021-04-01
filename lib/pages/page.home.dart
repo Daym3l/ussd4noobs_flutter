@@ -10,37 +10,41 @@ class HomePage extends StatelessWidget {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          titleSpacing: 10,
-          centerTitle: true,
-          title: AppBarTitle(),
-          actions: [IconButton(icon: Icon(Icons.settings), onPressed: () {})],
-          bottom: TabBar(
-            indicatorColor: Theme.of(context).accentColor,
-            tabs: [
-              Tab(
-                icon: Icon(Icons.monetization_on_outlined),
-                text: 'Saldos',
-              ),
-              Tab(
-                icon: Icon(Icons.storefront),
-                text: 'Planes',
-              ),
-              Tab(
-                icon: Icon(
-                  Icons.compare_arrows_sharp,
-                  size: 28,
+          appBar: AppBar(
+            elevation: 0,
+            titleSpacing: 10,
+            centerTitle: true,
+            title: AppBarTitle(),
+            actions: [IconButton(icon: Icon(Icons.settings), onPressed: () {})],
+            bottom: TabBar(
+              indicatorColor: Theme.of(context).accentColor,
+              tabs: [
+                Tab(
+                  icon: Icon(Icons.monetization_on_outlined),
+                  text: 'Saldos',
                 ),
-                text: 'Operaciones',
-              )
-            ],
+                Tab(
+                  icon: Icon(Icons.storefront),
+                  text: 'Planes',
+                ),
+                Tab(
+                  icon: Icon(
+                    Icons.compare_arrows_sharp,
+                    size: 28,
+                  ),
+                  text: 'Operaciones',
+                )
+              ],
+            ),
           ),
-        ),
-        body: TabBarView(
-          children: [TabSaldos(), TabPlanes(), TabTraferencia()],
-        ),
-      ),
+          body: new GestureDetector(
+            onTap: () {
+              FocusScope.of(context).unfocus();
+            },
+            child: TabBarView(
+              children: [TabSaldos(), TabPlanes(), TabTraferencia()],
+            ),
+          )),
     );
   }
 }

@@ -20,23 +20,58 @@ class VozTiles extends StatelessWidget {
         Divider(
           color: Colors.grey[300],
         ),
-        PlanTile(title: '5 minutos', subtitle: '\$ 37.50 CUP', action: () {}),
+        PlanTile(
+          title: '5 minutos',
+          subtitle: '\$ 37.50 CUP',
+          type: 'Voz',
+          plan: 5.0,
+          ussdCode: "*133*3*1#",
+          key: UniqueKey(),
+        ),
         Divider(
           color: Colors.grey[300],
         ),
-        PlanTile(title: '10 minutos', subtitle: '\$ 72.50 CUP', action: () {}),
+        PlanTile(
+          title: '10 minutos',
+          subtitle: '\$ 72.50 CUP',
+          type: 'Voz',
+          plan: 10.0,
+          ussdCode: "*133*3*2#",
+          key: UniqueKey(),
+        ),
         Divider(
           color: Colors.grey[300],
         ),
-        PlanTile(title: '15 minutos', subtitle: '\$ 105.00 CUP', action: () {}),
+        PlanTile(
+          title: '15 minutos',
+          subtitle: '\$ 105.00 CUP',
+          type: 'Voz',
+          plan: 15.0,
+          ussdCode: "*133*3*3#",
+          key: UniqueKey(),
+        ),
         Divider(
           color: Colors.grey[300],
         ),
-        PlanTile(title: '25 minutos', subtitle: '\$ 162.50 CUP', action: () {}),
+        PlanTile(
+          title: '25 minutos',
+          subtitle: '\$ 162.50 CUP',
+          type: 'Voz',
+          plan: 25.0,
+          ussdCode: "*133*3*4#",
+          key: UniqueKey(),
+        ),
         Divider(
           color: Colors.grey[300],
         ),
-        PlanTile(title: '40 minutos', subtitle: '\$ 250.50 CUP', action: () {}),
+        PlanTile(
+          title: '40 minutos',
+          subtitle: '\$ 250.50 CUP',
+          type: 'Voz',
+          plan: 40.0,
+          ussdCode: "*133*3*5#",
+          key: UniqueKey(),
+        ),
       ],
     );
   }

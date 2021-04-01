@@ -20,19 +20,47 @@ class SmsTiles extends StatelessWidget {
         Divider(
           color: Colors.grey[300],
         ),
-        PlanTile(title: '10 mensajes', subtitle: '\$ 17.50 CUP', action: () {}),
+        PlanTile(
+          title: '10 mensajes',
+          subtitle: '\$ 17.50 CUP',
+          type: 'SMS',
+          plan: 10.0,
+          ussdCode: "*133*2*1#",
+          key: UniqueKey(),
+        ),
         Divider(
           color: Colors.grey[300],
         ),
-        PlanTile(title: '20 mensajes', subtitle: '\$ 32.50 CUP', action: () {}),
+        PlanTile(
+          title: '20 mensajes',
+          subtitle: '\$ 32.50 CUP',
+          type: 'SMS',
+          plan: 20.0,
+          ussdCode: "*133*2*2#",
+          key: UniqueKey(),
+        ),
         Divider(
           color: Colors.grey[300],
         ),
-        PlanTile(title: '15 mensajes', subtitle: '\$ 52.50 CUP', action: () {}),
+        PlanTile(
+          title: '15 mensajes',
+          subtitle: '\$ 52.50 CUP',
+          type: 'SMS',
+          plan: 15.0,
+          ussdCode: "*133*2*3#",
+          key: UniqueKey(),
+        ),
         Divider(
           color: Colors.grey[300],
         ),
-        PlanTile(title: '25 mensajes', subtitle: '\$ 62.50 CUP', action: () {}),
+        PlanTile(
+          title: '25 mensajes',
+          subtitle: '\$ 62.50 CUP',
+          type: 'SMS',
+          plan: 25.0,
+          ussdCode: "*133*3*1#",
+          key: UniqueKey(),
+        ),
       ],
     );
   }
