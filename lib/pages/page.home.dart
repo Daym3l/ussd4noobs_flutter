@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ussd4noobs/pages/tab.planes.dart';
 import 'package:ussd4noobs/pages/tab.saldos.dart';
-import 'package:ussd4noobs/pages/tab.tranferencia.dart';
+import 'package:ussd4noobs/pages/tab.operaciones.dart';
 import 'package:ussd4noobs/widgets/text/widget.appBarTitle.dart';
 
 class HomePage extends StatelessWidget {

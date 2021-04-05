@@ -13,7 +13,7 @@ import 'package:ussd_service/ussd_service.dart';
 
 class ConectedModel extends Model {
   Saldo _saldo = Saldo(saldo: 0.0, vencimiento: '1/1/2021');
-  Bono _bono = Bono(valor: " ");
+  Bono _bono = Bono(valor: "Sin Bonificación.");
   Datos _datos = Datos(valor: 0.0, plan: 0.0, vence: 0, prefix: 'MB');
   Voz _voz = Voz(valor: '00:00:00', plan: 0.0, vence: 0);
   Sms _sms = Sms(valor: '0', plan: 0.0, vence: 0);
@@ -32,7 +32,7 @@ class ConectedModel extends Model {
     }
   }
 
-  Future<void> buyPlan({
+  Future<void> exeCallUssd({
     @required String ussdcode,
   }) async {
     await _checkPermision_call();

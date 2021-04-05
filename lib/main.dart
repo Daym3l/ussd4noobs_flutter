@@ -42,7 +42,7 @@ class _MyApp extends State<MyApp> {
             fontFamily: 'Poppins'),
         routes: {
           '/': (BuildContext context) => SplashPage(),
-          'home': (BuildContext context) => HomePage()
+          'home': (BuildContext context) => HomePage(),
         },
         onUnknownRoute: (settings) {
           return MaterialPageRoute(

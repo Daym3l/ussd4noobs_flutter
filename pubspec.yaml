@@ -33,6 +33,7 @@ dependencies:
   shared_preferences: ^2.0.5
   permission_handler: ^6.1.1
   ussd: ^0.0.2+1
+  qr_code_scanner: ^0.4.0
 
 
 flutter_icons:

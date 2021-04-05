@@ -40,7 +40,7 @@ class PlanTile extends StatelessWidget {
               color: Theme.of(context).accentColor,
             ),
             onPressed: () {
-              model.buyPlan(ussdcode: ussdCode);
+              model.exeCallUssd(ussdcode: ussdCode);
             },
           );
         }),
