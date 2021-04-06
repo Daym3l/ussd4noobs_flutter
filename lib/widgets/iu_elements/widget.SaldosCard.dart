@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:ussd4noobs/models/model.main.dart';
 import 'package:ussd4noobs/widgets/text/wideget.subtitle.dart';
@@ -7,7 +8,7 @@ class SaldosCard extends StatelessWidget {
   final String title;
   final dynamic valor;
   final int vence;
-  final Icon icon;
+  final FaIcon icon;
   final Color color;
   final double plan;
   final String prefix;
@@ -56,12 +57,12 @@ class SaldosCard extends StatelessWidget {
                       fontSize: 14),
                 ),
                 vence > 0
-                    ? Icon(
-                        Icons.thumb_up,
+                    ? FaIcon(
+                        FontAwesomeIcons.thumbsUp,
                         color: Colors.green,
                       )
-                    : Icon(
-                        Icons.thumb_down,
+                    : FaIcon(
+                        FontAwesomeIcons.thumbsDown,
                         color: Colors.red,
                       )
               ],

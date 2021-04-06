@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:ussd4noobs/models/model.main.dart';
 import 'package:ussd4noobs/widgets/text/wideget.Title.dart';
@@ -35,8 +36,8 @@ class PlanTile extends StatelessWidget {
         child: ScopedModelDescendant(
             builder: (BuildContext context, Widget child, MainModel model) {
           return IconButton(
-            icon: Icon(
-              Icons.arrow_forward_ios,
+            icon: FaIcon(
+              FontAwesomeIcons.caretRight,
               color: Theme.of(context).accentColor,
             ),
             onPressed: () {

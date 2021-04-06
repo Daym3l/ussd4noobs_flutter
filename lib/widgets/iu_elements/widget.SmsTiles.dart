@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ussd4noobs/widgets/iu_elements/widget.PlanTile.dart';
 import 'package:ussd4noobs/widgets/text/wideget.Title.dart';
 import 'package:ussd4noobs/widgets/text/wideget.subtitle.dart';
@@ -11,10 +12,10 @@ class SmsTiles extends StatelessWidget {
       subtitle: SubtitleText(
           'Si prefiere usar los mensajes (SMS) para comunicarse, elija uno de los planes disponibles.',
           12),
-      leading: Icon(
-        Icons.message,
+      leading: FaIcon(
+        FontAwesomeIcons.sms,
         color: Colors.green,
-        size: 36,
+        size: 30,
       ),
       children: [
         Divider(

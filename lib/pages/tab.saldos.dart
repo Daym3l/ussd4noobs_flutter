@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:ussd4noobs/helpers/helper.colors.dart';
 import 'package:ussd4noobs/models/model.main.dart';
@@ -37,15 +38,15 @@ class TabSaldos extends StatelessWidget {
                   model.getLoading
                       ? Spiner('Ejecutando código USSD...')
                       : Container(
-                          width: 50,
-                          height: 50,
+                          width: 55,
+                          height: 55,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(100),
                             color: Theme.of(context).primaryColor.withAlpha(50),
                           ),
                           child: IconButton(
-                            icon: Icon(
-                              Icons.refresh,
+                            icon: FaIcon(
+                              FontAwesomeIcons.syncAlt,
                               color: Theme.of(context).accentColor,
                             ),
                             onPressed: () async {
@@ -105,8 +106,8 @@ class TabSaldos extends StatelessWidget {
                             valor: model.DatosPrincipal,
                             plan: model.DatosPlan,
                             vence: model.VenceDatosDias,
-                            icon: Icon(
-                              Icons.network_wifi,
+                            icon: FaIcon(
+                              FontAwesomeIcons.wifi,
                               color: Colors.orange,
                               size: 35,
                             ),
@@ -119,8 +120,8 @@ class TabSaldos extends StatelessWidget {
                             valor: model.VozPrincipal,
                             plan: model.VozPlan,
                             vence: model.VenceVozDias,
-                            icon: Icon(
-                              Icons.mic,
+                            icon: FaIcon(
+                              FontAwesomeIcons.microphoneAlt,
                               color: Colors.blue,
                               size: 35,
                             ),
@@ -133,8 +134,8 @@ class TabSaldos extends StatelessWidget {
                             valor: model.SmsPrincipal,
                             plan: model.SmsPlan,
                             vence: model.VenceSmsDias,
-                            icon: Icon(
-                              Icons.message,
+                            icon: FaIcon(
+                              FontAwesomeIcons.sms,
                               color: Colors.green,
                               size: 35,
                             ),

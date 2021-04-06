@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ussd4noobs/pages/tab.planes.dart';
 import 'package:ussd4noobs/pages/tab.saldos.dart';
 import 'package:ussd4noobs/pages/tab.operaciones.dart';
@@ -15,23 +16,23 @@ class HomePage extends StatelessWidget {
             titleSpacing: 10,
             centerTitle: true,
             title: AppBarTitle(),
-            actions: [IconButton(icon: Icon(Icons.settings), onPressed: () {})],
+            actions: [
+              IconButton(
+                  icon: FaIcon(FontAwesomeIcons.ellipsisV), onPressed: () {})
+            ],
             bottom: TabBar(
               indicatorColor: Theme.of(context).accentColor,
               tabs: [
                 Tab(
-                  icon: Icon(Icons.monetization_on_outlined),
+                  icon: FaIcon(FontAwesomeIcons.handHoldingUsd),
                   text: 'Saldos',
                 ),
                 Tab(
-                  icon: Icon(Icons.storefront),
+                  icon: FaIcon(FontAwesomeIcons.store),
                   text: 'Planes',
                 ),
                 Tab(
-                  icon: Icon(
-                    Icons.compare_arrows_sharp,
-                    size: 28,
-                  ),
+                  icon: FaIcon(FontAwesomeIcons.coins),
                   text: 'Operaciones',
                 )
               ],

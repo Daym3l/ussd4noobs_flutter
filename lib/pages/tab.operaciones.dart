@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:ussd4noobs/helpers/helper.colors.dart';
 import 'package:ussd4noobs/models/model.main.dart';
@@ -13,7 +14,7 @@ import 'package:ussd4noobs/widgets/text/wideget.subtitle.dart';
 var maskFormatterod = new MaskTextInputFormatter(
     mask: '#### #### #### ####', filter: {"#": RegExp(r'[0-9]')});
 var maskFormattertelf = new MaskTextInputFormatter(
-    mask: '+53 # ### ## ##', filter: {"#": RegExp(r'[0-9]')});
+    mask: '53 # ### ## ##', filter: {"#": RegExp(r'[0-9]')});
 
 class TabTraferencia extends StatefulWidget {
   @override
@@ -22,7 +23,9 @@ class TabTraferencia extends StatefulWidget {
 
 class _TabTraferenciaState extends State<TabTraferencia> {
   TextEditingController controllerSaldo = TextEditingController();
-  TextEditingController controllerTrans = TextEditingController();
+  TextEditingController controllerNum = TextEditingController();
+  TextEditingController controllerMonto = TextEditingController();
+  TextEditingController controllerPass = TextEditingController();
 
   final GlobalKey<FormState> _formKeyRecarga = GlobalKey<FormState>();
   final GlobalKey<FormState> _formKeyTrans = GlobalKey<FormState>();
@@ -85,9 +88,10 @@ class _TabTraferenciaState extends State<TabTraferencia> {
                                   labelText: 'Introduza código de recarga',
                                   hintText: '#### #### #### ####',
                                   suffix: IconButton(
-                                    icon: Icon(
-                                      Icons.qr_code,
+                                    icon: FaIcon(
+                                      FontAwesomeIcons.qrcode,
                                       color: ussd_AccentColor,
+                                      size: 24,
                                     ),
                                     onPressed: () {
                                       showBottomSheet(
@@ -154,8 +158,8 @@ class _TabTraferenciaState extends State<TabTraferencia> {
                           (BuildContext context, Widget child,
                               MainModel model) {
                         return IconButton(
-                          icon: Icon(
-                            Icons.send,
+                          icon: FaIcon(
+                            FontAwesomeIcons.angleRight,
                             color: Colors.white,
                           ),
                           onPressed: () {
@@ -182,63 +186,105 @@ class _TabTraferenciaState extends State<TabTraferencia> {
                     border: Border.all(color: Colors.grey[300], width: 1),
                     borderRadius: BorderRadius.circular(15),
                   ),
-                  child: Column(
-                    children: [
-                      TitleText('Transferir saldo'),
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(4, 16, 4, 16),
-                        child: TextField(
-                          controller: controllerTrans,
-                          keyboardType: TextInputType.phone,
-                          textInputAction: TextInputAction.send,
-                          inputFormatters: [maskFormattertelf],
-                          decoration: InputDecoration(
-                              labelText: 'Introduza número a transferir',
-                              hintText: '+53 5 555 55 55',
-                              contentPadding: EdgeInsets.only(left: 12),
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(15))),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(4, 4, 4, 16),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Expanded(
-                              child: Padding(
-                                padding: EdgeInsets.only(right: 4),
-                                child: TextField(
-                                  keyboardType: TextInputType.number,
-                                  decoration: InputDecoration(
-                                      labelText: 'Monto en MN',
-                                      hintText: '25 CUP',
-                                      contentPadding: EdgeInsets.only(left: 12),
-                                      border: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(15))),
-                                ),
+                  child: Form(
+                      key: _formKeyTrans,
+                      child: Column(
+                        children: [
+                          TitleText('Transferir saldo'),
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(4, 16, 4, 16),
+                            child: TextFormField(
+                              controller: controllerNum,
+                              keyboardType: TextInputType.phone,
+                              textInputAction: TextInputAction.send,
+                              inputFormatters: [maskFormattertelf],
+                              validator: (String value) {
+                                if (value.isEmpty) {
+                                  return 'Número de telf. Requerido.';
+                                }
+                                if (value.length < 14) {
+                                  return 'Número de telf. incorrecto.';
+                                }
+                              },
+                              decoration: InputDecoration(
+                                labelText: 'Introduza número a transferir',
+                                hintText: '53 5 555 55 55',
+                                contentPadding: EdgeInsets.only(left: 12),
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15)),
                               ),
                             ),
-                            Expanded(
-                                child: Padding(
-                              padding: EdgeInsets.only(left: 4),
-                              child: TextField(
-                                  keyboardType: TextInputType.number,
-                                  obscureText: true,
-                                  decoration: InputDecoration(
-                                    labelText: 'Contraseña',
-                                    contentPadding: EdgeInsets.only(left: 12),
-                                    border: OutlineInputBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(15)),
-                                  )),
-                            ))
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(4, 4, 4, 16),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Expanded(
+                                  child: Padding(
+                                    padding: EdgeInsets.only(right: 4),
+                                    child: TextFormField(
+                                      controller: controllerMonto,
+                                      keyboardType: TextInputType.number,
+                                      validator: (String value) {
+                                        if (value.isEmpty) {
+                                          return 'Campo obligatorio.';
+                                        }
+                                      },
+                                      decoration: InputDecoration(
+                                          labelText: 'Monto en MN',
+                                          hintText: '25 CUP',
+                                          contentPadding:
+                                              EdgeInsets.only(left: 12),
+                                          border: OutlineInputBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(15))),
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                    child: Padding(
+                                  padding: EdgeInsets.only(left: 4),
+                                  child: TextFormField(
+                                      controller: controllerPass,
+                                      keyboardType: TextInputType.number,
+                                      obscureText: true,
+                                      validator: (String value) {
+                                        if (value.isEmpty) {
+                                          return 'Campo obligatorio.';
+                                        }
+                                        if (value.length < 4) {
+                                          return 'La longitud de la contraseña no debe ser menor que 4.';
+                                        }
+                                      },
+                                      decoration: InputDecoration(
+                                        labelText: 'Contraseña',
+                                        suffix: ScopedModelDescendant(builder:
+                                            (BuildContext context, Widget child,
+                                                MainModel model) {
+                                          return IconButton(
+                                              icon: FaIcon(
+                                                FontAwesomeIcons.key,
+                                                color: ussd_AccentColor,
+                                                size: 20,
+                                              ),
+                                              onPressed: () {
+                                                model.exeCallUssd(
+                                                    ussdcode: "*234*2#");
+                                              });
+                                        }),
+                                        contentPadding:
+                                            EdgeInsets.only(left: 12),
+                                        border: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(15)),
+                                      )),
+                                ))
+                              ],
+                            ),
+                          )
+                        ],
+                      )),
                 ),
               ),
               Positioned.fill(
@@ -268,15 +314,19 @@ class _TabTraferenciaState extends State<TabTraferencia> {
                         borderRadius: BorderRadius.circular(100),
                         color: ussd_SecondaryColor,
                       ),
-                      child: IconButton(
-                        icon: Icon(
-                          Icons.send_to_mobile,
-                          color: Colors.white,
-                        ),
-                        onPressed: () {
-                          print('Reload Saldo');
-                        },
-                      ),
+                      child: ScopedModelDescendant(builder:
+                          (BuildContext context, Widget child,
+                              MainModel model) {
+                        return IconButton(
+                          icon: FaIcon(
+                            FontAwesomeIcons.exchangeAlt,
+                            color: Colors.white,
+                          ),
+                          onPressed: () {
+                            _transferir(model);
+                          },
+                        );
+                      }),
                     ),
                   ),
                 ),
@@ -340,6 +390,19 @@ class _TabTraferenciaState extends State<TabTraferencia> {
       String cod = splitCodigo.join();
       controllerSaldo.clear();
       model.exeCallUssd(ussdcode: "*662*$cod#");
+    }
+  }
+
+  _transferir(MainModel model) {
+    if (_formKeyTrans.currentState.validate()) {
+      String _monto = controllerMonto.text;
+      String _pass = controllerPass.text;
+      List<String> _auxNum = controllerNum.text.split(" ");
+      String _num = _auxNum.join("");
+      model.exeCallUssd(ussdcode: "*234*1*$_num*$_pass*$_monto#");
+      controllerMonto.clear();
+      controllerNum.clear();
+      controllerPass.clear();
     }
   }
 
