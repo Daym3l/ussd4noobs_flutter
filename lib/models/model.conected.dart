@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:ussd/ussd.dart';
@@ -10,6 +11,7 @@ import 'package:ussd4noobs/domains/Voz.dart';
 
 import 'package:ussd4noobs/helpers/helper.sharedPref.dart';
 import 'package:ussd_service/ussd_service.dart';
+import 'package:sim_data/sim_data.dart';
 
 class ConectedModel extends Model {
   Saldo _saldo = Saldo(saldo: 0.0, vencimiento: '1/1/2021');
@@ -55,7 +57,10 @@ class ConectedModel extends Model {
       int subscriptionId = 1; // sim card subscription ID
       _isLoaing = true;
       notifyListeners();
-
+      SimData simData = await SimDataPlugin.getSimData();
+      simData.cards.forEach((SimCard s) {
+        subscriptionId = s.subscriptionId;
+      });
       try {
         String ussdResponseMessage = await UssdService.makeRequest(
           subscriptionId,
@@ -93,11 +98,16 @@ class ConectedModel extends Model {
               success = false;
             }
         }
-      } catch (e) {
+      } on PlatformException catch (e) {
+        _isLoaing = false;
+        success = false;
+        print("error! code: ${e.code} - message: ${e.message}");
+      }
+      /* catch (e) {
         _isLoaing = false;
         success = false;
         debugPrint("error! code: ${e.code} - message: ${e.message}");
-      }
+      } */
     }
     _isLoaing = false;
     notifyListeners();
@@ -139,12 +149,12 @@ class ConectedModel extends Model {
             prefix: res[4],
             vence: int.parse(res[6]));
       }
-      if (res.length == 9) {
+      if (res.length == 9 || res.length == 13) {
         _datos = Datos(
             valor: double.parse(res[4]),
             plan: _datos.plan,
             prefix: res[5],
-            vence: int.parse(res[7]));
+            vence: int.parse(res[res.length == 13 ? 11 : 7]));
       }
     }
 
