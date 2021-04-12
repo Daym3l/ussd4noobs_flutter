@@ -12,7 +12,10 @@ class Spiner extends StatelessWidget {
         children: [
           CircularProgressIndicator(),
           Padding(padding: EdgeInsets.only(top: 4.0)),
-          Text(_spinerText)
+          Text(
+            _spinerText,
+            style: TextStyle(color: Theme.of(context).accentColor),
+          )
         ],
       ),
     );
