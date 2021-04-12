@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:ussd4noobs/helpers/helper.colors.dart';
 import 'package:ussd4noobs/models/model.main.dart';
@@ -45,8 +44,8 @@ class TabSaldos extends StatelessWidget {
                             color: Theme.of(context).primaryColor.withAlpha(50),
                           ),
                           child: IconButton(
-                            icon: FaIcon(
-                              FontAwesomeIcons.syncAlt,
+                            icon: Icon(
+                              Icons.refresh_rounded,
                               color: Theme.of(context).accentColor,
                             ),
                             onPressed: () async {
@@ -106,8 +105,8 @@ class TabSaldos extends StatelessWidget {
                             valor: model.DatosPrincipal,
                             plan: model.DatosPlan,
                             vence: model.VenceDatosDias,
-                            icon: FaIcon(
-                              FontAwesomeIcons.wifi,
+                            icon: Icon(
+                              Icons.wifi,
                               color: Colors.orange,
                               size: 35,
                             ),
@@ -120,8 +119,8 @@ class TabSaldos extends StatelessWidget {
                             valor: model.VozPrincipal,
                             plan: model.VozPlan,
                             vence: model.VenceVozDias,
-                            icon: FaIcon(
-                              FontAwesomeIcons.microphoneAlt,
+                            icon: Icon(
+                              Icons.mic,
                               color: Colors.blue,
                               size: 35,
                             ),
@@ -134,8 +133,8 @@ class TabSaldos extends StatelessWidget {
                             valor: model.SmsPrincipal,
                             plan: model.SmsPlan,
                             vence: model.VenceSmsDias,
-                            icon: FaIcon(
-                              FontAwesomeIcons.sms,
+                            icon: Icon(
+                              Icons.sms,
                               color: Colors.green,
                               size: 35,
                             ),

@@ -142,7 +142,7 @@ class ConectedModel extends Model {
     if (res[4] == "adquirir" && res[5] == "adquirir") {
       _datos = Datos(valor: 0.0, plan: 0.0, vence: 0, prefix: 'MB');
     } else {
-      if (res.length == 8) {
+      if (res.length == 8 || res.length == 12) {
         _datos = Datos(
             valor: double.parse(res[3]),
             plan: _datos.plan,

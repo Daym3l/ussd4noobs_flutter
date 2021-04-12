@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:ussd4noobs/helpers/helper.colors.dart';
 import 'package:ussd4noobs/models/model.main.dart';
@@ -88,8 +87,8 @@ class _TabTraferenciaState extends State<TabTraferencia> {
                                   labelText: 'Introduza código de recarga',
                                   hintText: '#### #### #### ####',
                                   suffix: IconButton(
-                                    icon: FaIcon(
-                                      FontAwesomeIcons.qrcode,
+                                    icon: Icon(
+                                      Icons.qr_code_scanner_rounded,
                                       color: ussd_AccentColor,
                                       size: 24,
                                     ),
@@ -158,8 +157,8 @@ class _TabTraferenciaState extends State<TabTraferencia> {
                           (BuildContext context, Widget child,
                               MainModel model) {
                         return IconButton(
-                          icon: FaIcon(
-                            FontAwesomeIcons.angleRight,
+                          icon: Icon(
+                            Icons.chevron_right_rounded,
                             color: Colors.white,
                           ),
                           onPressed: () {
@@ -263,8 +262,8 @@ class _TabTraferenciaState extends State<TabTraferencia> {
                                             (BuildContext context, Widget child,
                                                 MainModel model) {
                                           return IconButton(
-                                              icon: FaIcon(
-                                                FontAwesomeIcons.key,
+                                              icon: Icon(
+                                                Icons.vpn_key_outlined,
                                                 color: ussd_AccentColor,
                                                 size: 20,
                                               ),
@@ -318,8 +317,8 @@ class _TabTraferenciaState extends State<TabTraferencia> {
                           (BuildContext context, Widget child,
                               MainModel model) {
                         return IconButton(
-                          icon: FaIcon(
-                            FontAwesomeIcons.exchangeAlt,
+                          icon: Icon(
+                            Icons.compare_arrows_rounded,
                             color: Colors.white,
                           ),
                           onPressed: () {
