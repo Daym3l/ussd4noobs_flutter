@@ -39,7 +39,7 @@ class SaldosCard extends StatelessWidget {
         margin: EdgeInsets.only(right: 10),
         padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Theme.of(context).cardColor,
           border: Border.all(color: Colors.grey[300], width: 1),
           borderRadius: BorderRadius.circular(15),
         ),

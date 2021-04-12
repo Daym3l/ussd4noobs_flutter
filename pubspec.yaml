@@ -35,6 +35,7 @@ dependencies:
   ussd: ^0.0.2+1
   sim_data: ^0.0.1+2
   qr_code_scanner: ^0.4.0
+  provider: ^5.0.0
 
 
 flutter_icons:

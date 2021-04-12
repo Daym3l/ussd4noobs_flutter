@@ -41,7 +41,7 @@ class TabSaldos extends StatelessWidget {
                           height: 55,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(100),
-                            color: Theme.of(context).primaryColor.withAlpha(50),
+                            color: Theme.of(context).buttonColor.withAlpha(80),
                           ),
                           child: IconButton(
                             icon: Icon(

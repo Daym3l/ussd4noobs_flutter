@@ -30,7 +30,7 @@ class PlanTile extends StatelessWidget {
         height: 50,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(100),
-          color: Theme.of(context).primaryColor.withAlpha(50),
+          color: Theme.of(context).buttonColor.withAlpha(80),
         ),
         child: ScopedModelDescendant(
             builder: (BuildContext context, Widget child, MainModel model) {

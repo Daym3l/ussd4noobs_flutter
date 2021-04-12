@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:ussd4noobs/helpers/helper.colors.dart';
 import 'package:ussd4noobs/widgets/text/widget.copyright.dart';
 import 'package:ussd4noobs/widgets/text/widget.AppTitleFormat.dart';
 import 'package:package_info/package_info.dart';
@@ -37,7 +38,7 @@ class _Splash extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).primaryColor,
+      backgroundColor: ussd_PrimaryColor,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

@@ -4,7 +4,7 @@ const ussd_PrimaryColor = const Color(0xFF00968A);
 const ussd_PrimaryVariant = const Color(0xFF00796D);
 const ussd_PrimaryLight = const Color(0xFF52c7ba);
 const ussd_PrimaryText = const Color(0xFF000000);
-const ussd_PrimarySubText = const Color(0xFF212121);
+const ussd_PrimarySubText = const Color(0xFF9e9e9e);
 
 const ussd_SecondaryColor = const Color(0xFF1976d2);
 const ussd_SecondaryVariant = const Color(0xFF004ba0);

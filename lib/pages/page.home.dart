@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:ussd4noobs/pages/tab.planes.dart';
 import 'package:ussd4noobs/pages/tab.saldos.dart';
 import 'package:ussd4noobs/pages/tab.operaciones.dart';
+import 'package:ussd4noobs/theme/theme.provider.dart';
 import 'package:ussd4noobs/widgets/text/widget.appBarTitle.dart';
 
 class HomePage extends StatelessWidget {
+  final ThemeProvider themeProvider;
+
+  HomePage(this.themeProvider);
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -16,6 +21,13 @@ class HomePage extends StatelessWidget {
             centerTitle: true,
             title: AppBarTitle(),
             actions: [
+              IconButton(
+                  icon: Icon(themeProvider.darkTheme
+                      ? Icons.bedtime_rounded
+                      : Icons.wb_sunny_rounded),
+                  onPressed: () {
+                    themeProvider.darkTheme = !themeProvider.darkTheme;
+                  }),
               IconButton(icon: Icon(Icons.more_vert), onPressed: () {})
             ],
             bottom: TabBar(

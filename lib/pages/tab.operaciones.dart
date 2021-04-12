@@ -59,7 +59,7 @@ class _TabTraferenciaState extends State<TabTraferencia> {
                   margin: EdgeInsets.only(right: 10),
                   padding: EdgeInsets.fromLTRB(10, 5, 10, 25),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Theme.of(context).cardColor,
                     border: Border.all(color: Colors.grey[300], width: 1),
                     borderRadius: BorderRadius.circular(15),
                   ),
@@ -72,6 +72,9 @@ class _TabTraferenciaState extends State<TabTraferencia> {
                             key: _formKeyRecarga,
                             child: TextFormField(
                               controller: controllerSaldo,
+                              style: TextStyle(
+                                  color: Theme.of(context).focusColor),
+                              cursorColor: Theme.of(context).indicatorColor,
                               keyboardType: TextInputType.number,
                               textInputAction: TextInputAction.send,
                               inputFormatters: [maskFormatterod],
@@ -89,7 +92,7 @@ class _TabTraferenciaState extends State<TabTraferencia> {
                                   suffix: IconButton(
                                     icon: Icon(
                                       Icons.qr_code_scanner_rounded,
-                                      color: ussd_AccentColor,
+                                      color: Theme.of(context).accentColor,
                                       size: 24,
                                     ),
                                     onPressed: () {
@@ -130,28 +133,31 @@ class _TabTraferenciaState extends State<TabTraferencia> {
                 bottom: -6.5,
                 child: Align(
                   alignment: Alignment.bottomCenter,
-                  child: Container(
-                    width: 70,
-                    height: 70,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(100),
-                      color: Colors.white,
+                  child: Padding(
+                    padding: EdgeInsets.all(3),
+                    child: Container(
+                      width: 70,
+                      height: 70,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(100),
+                        color: Theme.of(context).cardColor,
+                      ),
                     ),
                   ),
                 ),
               ),
               Positioned.fill(
-                bottom: -2,
+                bottom: -4,
                 child: Align(
                   alignment: Alignment.bottomCenter,
                   child: Padding(
-                    padding: EdgeInsets.all(2),
+                    padding: EdgeInsets.all(4),
                     child: Container(
                       width: 60,
                       height: 60,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(100),
-                        color: ussd_SecondaryColor,
+                        color: Theme.of(context).buttonColor,
                       ),
                       child: ScopedModelDescendant(builder:
                           (BuildContext context, Widget child,
@@ -181,7 +187,7 @@ class _TabTraferenciaState extends State<TabTraferencia> {
                   margin: EdgeInsets.only(right: 10),
                   padding: EdgeInsets.fromLTRB(10, 5, 10, 25),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Theme.of(context).cardColor,
                     border: Border.all(color: Colors.grey[300], width: 1),
                     borderRadius: BorderRadius.circular(15),
                   ),
@@ -194,6 +200,9 @@ class _TabTraferenciaState extends State<TabTraferencia> {
                             padding: EdgeInsets.fromLTRB(4, 16, 4, 16),
                             child: TextFormField(
                               controller: controllerNum,
+                              style: TextStyle(
+                                  color: Theme.of(context).focusColor),
+                              cursorColor: Theme.of(context).indicatorColor,
                               keyboardType: TextInputType.phone,
                               textInputAction: TextInputAction.send,
                               inputFormatters: [maskFormattertelf],
@@ -224,6 +233,10 @@ class _TabTraferenciaState extends State<TabTraferencia> {
                                     padding: EdgeInsets.only(right: 4),
                                     child: TextFormField(
                                       controller: controllerMonto,
+                                      style: TextStyle(
+                                          color: Theme.of(context).focusColor),
+                                      cursorColor:
+                                          Theme.of(context).indicatorColor,
                                       keyboardType: TextInputType.number,
                                       validator: (String value) {
                                         if (value.isEmpty) {
@@ -246,8 +259,12 @@ class _TabTraferenciaState extends State<TabTraferencia> {
                                   padding: EdgeInsets.only(left: 4),
                                   child: TextFormField(
                                       controller: controllerPass,
+                                      style: TextStyle(
+                                          color: Theme.of(context).focusColor),
                                       keyboardType: TextInputType.number,
                                       obscureText: true,
+                                      cursorColor:
+                                          Theme.of(context).indicatorColor,
                                       validator: (String value) {
                                         if (value.isEmpty) {
                                           return 'Campo obligatorio.';
@@ -264,7 +281,8 @@ class _TabTraferenciaState extends State<TabTraferencia> {
                                           return IconButton(
                                               icon: Icon(
                                                 Icons.vpn_key_outlined,
-                                                color: ussd_AccentColor,
+                                                color: Theme.of(context)
+                                                    .accentColor,
                                                 size: 20,
                                               ),
                                               onPressed: () {
@@ -295,7 +313,7 @@ class _TabTraferenciaState extends State<TabTraferencia> {
                     height: 70,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(100),
-                      color: Colors.white,
+                      color: Theme.of(context).cardColor,
                     ),
                   ),
                 ),
@@ -305,13 +323,13 @@ class _TabTraferenciaState extends State<TabTraferencia> {
                 child: Align(
                   alignment: Alignment.bottomCenter,
                   child: Padding(
-                    padding: EdgeInsets.all(2),
+                    padding: EdgeInsets.all(3),
                     child: Container(
                       width: 60,
                       height: 60,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(100),
-                        color: ussd_SecondaryColor,
+                        color: Theme.of(context).buttonColor,
                       ),
                       child: ScopedModelDescendant(builder:
                           (BuildContext context, Widget child,
