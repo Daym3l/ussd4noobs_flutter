@@ -1,9 +1,19 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="dev.daym3l.ussd4noobs">
-   
-   <application
+
+
+    <application
         android:label="USSD4NOOBS"
         android:icon="@mipmap/ic_launcher">
+        <service
+            android:name=".services.NetworkChangeTileService"
+            android:icon="@drawable/lte"
+            android:label="Cambio de red"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+              <intent-filter>
+                  <action android:name="android.service.quicksettings.action.QS_TILE" />
+              </intent-filter>
+        </service>
        
 
         <activity
@@ -26,6 +36,7 @@
                  screen fades out. A splash screen is useful to avoid any visual
                  gap between the end of Android's launch screen and the painting of
                  Flutter's first frame. -->
+          
             <meta-data
               android:name="io.flutter.embedding.android.SplashScreenDrawable"
               android:resource="@drawable/launch_background"
@@ -43,5 +54,6 @@
     </application>
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 </manifest>
