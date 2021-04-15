@@ -39,8 +39,7 @@ class InfoPage extends StatelessWidget {
               ),
               title: SubtitleText('Califica la aplicación', 18),
               subtitle: SubtitleText(
-                  'Haznos saber en Apklist cómo podemos hacerla aún mejor.',
-                  12),
+                  'Haznos saber en Apklis cómo podemos hacerla aún mejor.', 12),
             ),
             Padding(padding: EdgeInsets.only(top: 14)),
             ListTile(
@@ -61,7 +60,7 @@ class InfoPage extends StatelessWidget {
               ),
               title: SubtitleText('Donar', 18),
               subtitle: SubtitleText(
-                  'Si crees que merezco que me paguen por mi trabajo, puedes dejar algo de dinero aquí.',
+                  'Si crees que merezco que paguen por mi trabajo, puedes dejar algo de dinero aquí.',
                   12),
             ),
             Padding(padding: EdgeInsets.only(top: 14)),
@@ -71,7 +70,7 @@ class InfoPage extends StatelessWidget {
                 color: Theme.of(context).accentColor,
               ),
               title: SubtitleText('Preguntas más frecuentes.', 18),
-              subtitle: SubtitleText('Necesitas ayuda.', 12),
+              subtitle: SubtitleText('Necesitas ayuda?', 12),
             ),
             Padding(
               padding: EdgeInsets.only(top: 24, left: 24, right: 24),
