@@ -18,7 +18,7 @@ class SmsTiles extends StatelessWidget {
       ),
       children: [
         Divider(
-          color: Colors.grey[300],
+          color: Theme.of(context).dividerColor,
         ),
         PlanTile(
           title: '10 mensajes',
@@ -29,7 +29,7 @@ class SmsTiles extends StatelessWidget {
           key: UniqueKey(),
         ),
         Divider(
-          color: Colors.grey[300],
+          color: Theme.of(context).dividerColor,
         ),
         PlanTile(
           title: '20 mensajes',
@@ -40,7 +40,7 @@ class SmsTiles extends StatelessWidget {
           key: UniqueKey(),
         ),
         Divider(
-          color: Colors.grey[300],
+          color: Theme.of(context).dividerColor,
         ),
         PlanTile(
           title: '15 mensajes',
@@ -51,7 +51,7 @@ class SmsTiles extends StatelessWidget {
           key: UniqueKey(),
         ),
         Divider(
-          color: Colors.grey[300],
+          color: Theme.of(context).dividerColor,
         ),
         PlanTile(
           title: '25 mensajes',

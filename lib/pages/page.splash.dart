@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ussd4noobs/helpers/helper.colors.dart';
 import 'package:ussd4noobs/widgets/text/widget.copyright.dart';
 import 'package:ussd4noobs/widgets/text/widget.AppTitleFormat.dart';
@@ -26,10 +27,9 @@ class _Splash extends State<SplashPage> {
   Future<void> _getVersion() async {
     final PackageInfo packageInfo = await PackageInfo.fromPlatform();
 
-    //String appName = packageInfo.appName;
-    //String packageName = packageInfo.packageName;
-    //String buildNumber = packageInfo.buildNumber;
+    SharedPreferences prefs = await SharedPreferences.getInstance();
 
+    prefs.setString('version', packageInfo.version);
     setState(() {
       _version = packageInfo.version;
     });

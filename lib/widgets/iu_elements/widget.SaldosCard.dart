@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:ussd4noobs/helpers/helper.colors.dart';
 import 'package:ussd4noobs/models/model.main.dart';
+import 'package:ussd4noobs/widgets/iu_elements/widget.Spinner.dart';
 import 'package:ussd4noobs/widgets/text/wideget.subtitle.dart';
 
 class SaldosCard extends StatelessWidget {
@@ -8,6 +10,7 @@ class SaldosCard extends StatelessWidget {
   final dynamic valor;
   final int vence;
   final Icon icon;
+  final bool loading;
   final Color color;
   final double plan;
   final String prefix;
@@ -21,6 +24,7 @@ class SaldosCard extends StatelessWidget {
       @required this.valor,
       @required this.plan,
       @required this.vence,
+      @required this.loading,
       @required this.icon,
       @required this.prefix,
       @required this.ussdcode,
@@ -31,8 +35,17 @@ class SaldosCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       key: UniqueKey(),
-      onTap: () {
-        model.makeMyCall(type: title, ussdcode: ussdcode);
+      onTap: () async {
+        bool success = await model.makeMyCall(type: title, ussdcode: ussdcode);
+        if (!success) {
+          final snackBar = SnackBar(
+            elevation: 6.0,
+            backgroundColor: ussd_ErrorColor,
+            content:
+                Text('Error al ejecutar código MMI. Intentelo nuevamente.'),
+          );
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        }
       },
       child: Container(
         width: 200,
@@ -67,14 +80,16 @@ class SaldosCard extends StatelessWidget {
               ],
             ),
             Padding(padding: EdgeInsets.only(top: 15)),
-            CircularPercentIndicator(
-              radius: 80.0,
-              lineWidth: 9,
-              percent: vence == 0 ? 0 : (30 - vence) / 30,
-              circularStrokeCap: CircularStrokeCap.round,
-              center: icon,
-              progressColor: color,
-            ),
+            loading
+                ? Spiner('')
+                : CircularPercentIndicator(
+                    radius: 80.0,
+                    lineWidth: 9,
+                    percent: vence == 0 ? 0 : (30 - vence) / 30,
+                    circularStrokeCap: CircularStrokeCap.round,
+                    center: icon,
+                    progressColor: color,
+                  ),
             Padding(padding: EdgeInsets.only(top: 15)),
             RichText(
               text: TextSpan(children: [

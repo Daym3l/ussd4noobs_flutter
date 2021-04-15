@@ -56,7 +56,7 @@ class TabSaldos extends StatelessWidget {
                                   elevation: 6.0,
                                   backgroundColor: ussd_ErrorColor,
                                   content: Text(
-                                      'Error al ejecutar código MMI. Esto suele cuando existe problemas con la cobertura.'),
+                                      'Error al ejecutar código MMI. Intentelo nuevamente.'),
                                 );
                                 ScaffoldMessenger.of(context)
                                     .showSnackBar(snackBar);
@@ -66,7 +66,7 @@ class TabSaldos extends StatelessWidget {
                         ),
                   Divider(
                     height: 25,
-                    color: Colors.grey[300],
+                    color: Theme.of(context).dividerColor,
                   ),
                   Container(
                     child: Row(
@@ -85,7 +85,7 @@ class TabSaldos extends StatelessWidget {
                   ),
                   Divider(
                     height: 25,
-                    color: Colors.grey[300],
+                    color: Theme.of(context).dividerColor,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -105,6 +105,7 @@ class TabSaldos extends StatelessWidget {
                             valor: model.DatosPrincipal,
                             plan: model.DatosPlan,
                             vence: model.VenceDatosDias,
+                            loading: model.getLoadingDatos,
                             icon: Icon(
                               Icons.wifi,
                               color: Colors.orange,
@@ -119,6 +120,7 @@ class TabSaldos extends StatelessWidget {
                             valor: model.VozPrincipal,
                             plan: model.VozPlan,
                             vence: model.VenceVozDias,
+                            loading: model.getLoadingVoz,
                             icon: Icon(
                               Icons.mic,
                               color: Colors.blue,
@@ -133,6 +135,7 @@ class TabSaldos extends StatelessWidget {
                             valor: model.SmsPrincipal,
                             plan: model.SmsPlan,
                             vence: model.VenceSmsDias,
+                            loading: model.getLoadingSms,
                             icon: Icon(
                               Icons.sms,
                               color: Colors.green,

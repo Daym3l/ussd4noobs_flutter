@@ -18,7 +18,7 @@ class VozTiles extends StatelessWidget {
       ),
       children: [
         Divider(
-          color: Colors.grey[300],
+          color: Theme.of(context).dividerColor,
         ),
         PlanTile(
           title: '5 minutos',
@@ -29,7 +29,7 @@ class VozTiles extends StatelessWidget {
           key: UniqueKey(),
         ),
         Divider(
-          color: Colors.grey[300],
+          color: Theme.of(context).dividerColor,
         ),
         PlanTile(
           title: '10 minutos',
@@ -40,7 +40,7 @@ class VozTiles extends StatelessWidget {
           key: UniqueKey(),
         ),
         Divider(
-          color: Colors.grey[300],
+          color: Theme.of(context).dividerColor,
         ),
         PlanTile(
           title: '15 minutos',
@@ -51,7 +51,7 @@ class VozTiles extends StatelessWidget {
           key: UniqueKey(),
         ),
         Divider(
-          color: Colors.grey[300],
+          color: Theme.of(context).dividerColor,
         ),
         PlanTile(
           title: '25 minutos',
@@ -62,7 +62,7 @@ class VozTiles extends StatelessWidget {
           key: UniqueKey(),
         ),
         Divider(
-          color: Colors.grey[300],
+          color: Theme.of(context).dividerColor,
         ),
         PlanTile(
           title: '40 minutos',

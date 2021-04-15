@@ -3,6 +3,7 @@ import 'package:ussd4noobs/pages/tab.planes.dart';
 import 'package:ussd4noobs/pages/tab.saldos.dart';
 import 'package:ussd4noobs/pages/tab.operaciones.dart';
 import 'package:ussd4noobs/theme/theme.provider.dart';
+import 'package:ussd4noobs/widgets/iu_elements/widget.Menu.dart';
 import 'package:ussd4noobs/widgets/text/widget.appBarTitle.dart';
 
 class HomePage extends StatelessWidget {
@@ -28,7 +29,7 @@ class HomePage extends StatelessWidget {
                   onPressed: () {
                     themeProvider.darkTheme = !themeProvider.darkTheme;
                   }),
-              IconButton(icon: Icon(Icons.more_vert), onPressed: () {})
+              Menu()
             ],
             bottom: TabBar(
               indicatorColor: Theme.of(context).accentColor,

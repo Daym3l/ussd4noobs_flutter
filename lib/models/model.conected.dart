@@ -21,10 +21,25 @@ class ConectedModel extends Model {
   Sms _sms = Sms(valor: '0', plan: 0.0, vence: 0);
 
   bool _isLoaing = false;
+  bool _isLoaingDatos = false;
+  bool _isLoaingVoz = false;
+  bool _isLoaingSms = false;
   SharedPref _pref = SharedPref();
 
   bool get getLoading {
     return _isLoaing;
+  }
+
+  bool get getLoadingDatos {
+    return _isLoaingDatos;
+  }
+
+  bool get getLoadingVoz {
+    return _isLoaingVoz;
+  }
+
+  bool get getLoadingSms {
+    return _isLoaingSms;
   }
 
   _checkPermision_call() async {
@@ -49,13 +64,44 @@ class ConectedModel extends Model {
     }
   }
 
+  void _loadingState(String type) {
+    switch (type) {
+      case 'Datos':
+        {
+          _isLoaingDatos = true;
+          notifyListeners();
+        }
+        break;
+      case 'Voz':
+        {
+          _isLoaingVoz = true;
+          notifyListeners();
+        }
+        break;
+      case 'SMS':
+        {
+          {
+            _isLoaingSms = true;
+            notifyListeners();
+          }
+          break;
+        }
+        break;
+      default:
+        {
+          _isLoaing = true;
+          notifyListeners();
+        }
+    }
+  }
+
   Future<bool> makeMyCall(
       {@required String type, @required String ussdcode}) async {
     await _checkPermision_call();
     bool success = true;
     if (await Permission.phone.isGranted) {
       int subscriptionId = 1; // sim card subscription ID
-      _isLoaing = true;
+      _loadingState(type);
       notifyListeners();
       SimData simData = await SimDataPlugin.getSimData();
       simData.cards.forEach((SimCard s) {
@@ -100,16 +146,17 @@ class ConectedModel extends Model {
         }
       } on PlatformException catch (e) {
         _isLoaing = false;
+        _isLoaingDatos = false;
+        _isLoaingVoz = false;
+        _isLoaingSms = false;
         success = false;
         print("error! code: ${e.code} - message: ${e.message}");
       }
-      /* catch (e) {
-        _isLoaing = false;
-        success = false;
-        debugPrint("error! code: ${e.code} - message: ${e.message}");
-      } */
     }
     _isLoaing = false;
+    _isLoaingDatos = false;
+    _isLoaingVoz = false;
+    _isLoaingSms = false;
     notifyListeners();
     return success;
   }

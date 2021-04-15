@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Spiner extends StatelessWidget {
@@ -10,7 +11,9 @@ class Spiner extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          CircularProgressIndicator(),
+          CupertinoActivityIndicator(
+            radius: 30,
+          ),
           Padding(padding: EdgeInsets.only(top: 4.0)),
           Text(
             _spinerText,

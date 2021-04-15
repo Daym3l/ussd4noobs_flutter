@@ -19,7 +19,7 @@ class DatosTiles extends StatelessWidget {
       ),
       children: [
         Divider(
-          color: Colors.grey[300],
+          color: Theme.of(context).dividerColor,
         ),
         PlanTile(
           title: 'Tarifa por Consumo',
@@ -30,7 +30,7 @@ class DatosTiles extends StatelessWidget {
           key: UniqueKey(),
         ),
         Divider(
-          color: Colors.grey[300],
+          color: Theme.of(context).dividerColor,
         ),
         PlanTile(
           title: 'Bolsa Correo',
@@ -41,7 +41,7 @@ class DatosTiles extends StatelessWidget {
           key: UniqueKey(),
         ),
         Divider(
-          color: Colors.grey[300],
+          color: Theme.of(context).dividerColor,
         ),
         PlanTile(
           title: 'Bolsa Diaria LTE',
@@ -52,7 +52,7 @@ class DatosTiles extends StatelessWidget {
           key: UniqueKey(),
         ),
         Divider(
-          color: Colors.grey[300],
+          color: Theme.of(context).dividerColor,
         ),
         PlanTile(
           title: '400 MB + 500 MB de Bono LTE',
@@ -63,7 +63,7 @@ class DatosTiles extends StatelessWidget {
           key: UniqueKey(),
         ),
         Divider(
-          color: Colors.grey[300],
+          color: Theme.of(context).dividerColor,
         ),
         PlanTile(
           title: '600 MB + 800 MB de Bono LTE',
@@ -74,7 +74,7 @@ class DatosTiles extends StatelessWidget {
           key: UniqueKey(),
         ),
         Divider(
-          color: Colors.grey[300],
+          color: Theme.of(context).dividerColor,
         ),
         PlanTile(
           title: '1 GB + 1.5 GB de Bono LTE',
@@ -85,7 +85,7 @@ class DatosTiles extends StatelessWidget {
           key: UniqueKey(),
         ),
         Divider(
-          color: Colors.grey[300],
+          color: Theme.of(context).dividerColor,
         ),
         PlanTile(
           title: '2.5 GB + 3 GB de Bono LTE',
@@ -96,7 +96,7 @@ class DatosTiles extends StatelessWidget {
           key: UniqueKey(),
         ),
         Divider(
-          color: Colors.grey[300],
+          color: Theme.of(context).dividerColor,
         ),
         PlanTile(
           title: '4 GB + 5 GB de Bono LTE',
@@ -107,7 +107,7 @@ class DatosTiles extends StatelessWidget {
           key: UniqueKey(),
         ),
         Divider(
-          color: Colors.grey[300],
+          color: Theme.of(context).dividerColor,
         ),
         PlanTile(
           title: '1 GB LTE',
@@ -118,7 +118,7 @@ class DatosTiles extends StatelessWidget {
           key: UniqueKey(),
         ),
         Divider(
-          color: Colors.grey[300],
+          color: Theme.of(context).dividerColor,
         ),
         PlanTile(
           title: '2.5 GB LTE',
@@ -129,7 +129,7 @@ class DatosTiles extends StatelessWidget {
           key: UniqueKey(),
         ),
         Divider(
-          color: Colors.grey[300],
+          color: Theme.of(context).dividerColor,
         ),
         PlanTile(
           title: '14 GB LTE (4GB + 10GB Solo LTE)',

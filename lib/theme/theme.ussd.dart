@@ -16,6 +16,7 @@ class Styles {
       hoverColor: isDarkTheme ? Color(0xff3A3A3B) : ussd_AccentColor,
       focusColor: isDarkTheme ? Colors.white70 : Color(0xFF151515),
       disabledColor: Colors.grey,
+      dividerColor: isDarkTheme ? Colors.grey[300] : Colors.grey,
       cardColor: isDarkTheme ? Color(0xFF151515) : Colors.white,
       canvasColor: isDarkTheme ? Colors.black : Colors.grey[50],
       brightness: isDarkTheme ? Brightness.dark : Brightness.light,
