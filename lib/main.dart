@@ -24,7 +24,6 @@ class MyApp extends StatefulWidget {
 class _MyApp extends State<MyApp> {
   final MainModel _mainModel = MainModel();
   ThemeProvider themeProvider = new ThemeProvider();
-  String _version;
 
   @override
   void initState() {
@@ -34,18 +33,12 @@ class _MyApp extends State<MyApp> {
     _mainModel.getVoz();
     _mainModel.getSms();
     getCurrentAppTheme();
-    getCurrentVersion();
 
     super.initState();
   }
 
   void getCurrentAppTheme() async {
     themeProvider.darkTheme = await themeProvider.themePreference.getTheme();
-  }
-
-  void getCurrentVersion() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    _version = prefs.getString('version');
   }
 
   @override
@@ -65,7 +58,7 @@ class _MyApp extends State<MyApp> {
               routes: {
                 '/': (BuildContext context) => SplashPage(),
                 'home': (BuildContext context) => HomePage(themeProvider),
-                'info': (BuildContext context) => InfoPage(_version),
+                'info': (BuildContext context) => InfoPage(),
                 'settings': (BuildContext context) => SettingsPage(),
               },
               onUnknownRoute: (settings) {

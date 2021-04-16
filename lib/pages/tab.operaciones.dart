@@ -1,7 +1,7 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:ussd4noobs/models/model.main.dart';
 import 'package:ussd4noobs/widgets/text/wideget.Title.dart';
@@ -31,6 +31,13 @@ class _TabTraferenciaState extends State<TabTraferencia> {
 
   Barcode result;
   QRViewController controller;
+
+  _checkPermision_camera() async {
+    var cameraStatus = await Permission.camera.status;
+    if (!cameraStatus.isPermanentlyDenied) {
+      await Permission.camera.request();
+    }
+  }
 
   // In order to get hot reload to work we need to pause the camera if the platform
   // is android, or resume the camera if the platform is iOS.
@@ -94,28 +101,32 @@ class _TabTraferenciaState extends State<TabTraferencia> {
                                       color: Theme.of(context).accentColor,
                                       size: 24,
                                     ),
-                                    onPressed: () {
-                                      showBottomSheet(
-                                          context: context,
-                                          builder: (BuildContext bc) {
-                                            return Container(
-                                              height: 400,
-                                              child: Column(
-                                                children: <Widget>[
-                                                  Expanded(
-                                                      flex: 5,
-                                                      child: _buildQrView(bc)),
-                                                  Expanded(
-                                                    flex: 1,
-                                                    child: Center(
-                                                      child: SubtitleText(
-                                                          'Escanear a código.'),
-                                                    ),
-                                                  )
-                                                ],
-                                              ),
-                                            );
-                                          });
+                                    onPressed: () async {
+                                      await _checkPermision_camera();
+                                      if (await Permission.camera.isGranted) {
+                                        showBottomSheet(
+                                            context: context,
+                                            builder: (BuildContext bc) {
+                                              return Container(
+                                                height: 400,
+                                                child: Column(
+                                                  children: <Widget>[
+                                                    Expanded(
+                                                        flex: 5,
+                                                        child:
+                                                            _buildQrView(bc)),
+                                                    Expanded(
+                                                      flex: 1,
+                                                      child: Center(
+                                                        child: SubtitleText(
+                                                            'Escanear a código.'),
+                                                      ),
+                                                    )
+                                                  ],
+                                                ),
+                                              );
+                                            });
+                                      }
                                     },
                                   ),
                                   contentPadding:

@@ -1,18 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:ussd4noobs/widgets/text/wideget.Title.dart';
 import 'package:ussd4noobs/widgets/text/wideget.subtitle.dart';
 
-class InfoPage extends StatelessWidget {
-  final String version;
+class InfoPage extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return _InfoPage();
+  }
+}
+
+class _InfoPage extends State<InfoPage> {
+  String version;
   final String _url = 'https://www.apklis.cu/application/dev.mad.ussd4etecsa';
   final Uri _emailLaunchUri = Uri(
       scheme: 'mailto',
       path: 'ussd4noobs@gmail.com',
       queryParameters: {'subject': 'Bug'});
-  InfoPage(this.version);
 
   void _launchURL(String uri) async => {await launch(uri)};
+
+  void getCurrentVersion() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    setState(() {
+      version = prefs.getString('version');
+    });
+  }
+
+  @override
+  void initState() {
+    getCurrentVersion();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +56,7 @@ class InfoPage extends StatelessWidget {
                 child: TitleText('USSD4NOOBS', 24),
               ),
               Center(
-                child: TileText(version.isEmpty ? 'loading' : version, 15),
+                child: TileText(version, 15),
               ),
               SizedBox(
                 height: 40,
