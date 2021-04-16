@@ -20,9 +20,9 @@ class Styles {
       cardColor: isDarkTheme ? Color(0xFF151515) : Colors.white,
       canvasColor: isDarkTheme ? Colors.black : Colors.grey[50],
       brightness: isDarkTheme ? Brightness.dark : Brightness.light,
-      textTheme: Theme.of(context)
-          .textTheme
-          .copyWith(bodyText1: TextStyle(color: ussd_PrimaryColor)),
+      textTheme: Theme.of(context).textTheme.copyWith(
+          bodyText1:
+              TextStyle(color: isDarkTheme ? Colors.white54 : Colors.black87)),
       buttonTheme: Theme.of(context).buttonTheme.copyWith(
           colorScheme: isDarkTheme ? ColorScheme.dark() : ColorScheme.light()),
       appBarTheme: AppBarTheme(

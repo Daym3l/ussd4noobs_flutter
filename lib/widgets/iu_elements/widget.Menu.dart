@@ -15,7 +15,9 @@ class _MenuState extends State<Menu> {
       onSelected: (int option) {
         switch (option) {
           case 1:
-            {}
+            {
+              Navigator.pushNamed(context, "settings");
+            }
             break;
 
           default:
@@ -27,11 +29,11 @@ class _MenuState extends State<Menu> {
       itemBuilder: (context) => [
         PopupMenuItem(
           value: 1,
-          child: SubtitleText("Configuración", 15),
+          child: TileText("Ajustes", 15),
         ),
         PopupMenuItem(
           value: 2,
-          child: SubtitleText("Acerca de.", 15),
+          child: TileText("Acerca de.", 15),
         ),
       ],
     );

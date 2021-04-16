@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ussd4noobs/models/model.main.dart';
 import 'package:ussd4noobs/pages/page.home.dart';
 import 'package:ussd4noobs/pages/page.info.dart';
+import 'package:ussd4noobs/pages/page.settings.dart';
 import 'package:ussd4noobs/pages/page.splash.dart';
 import 'package:ussd4noobs/theme/theme.provider.dart';
 import 'package:ussd4noobs/theme/theme.ussd.dart';
@@ -65,6 +66,7 @@ class _MyApp extends State<MyApp> {
                 '/': (BuildContext context) => SplashPage(),
                 'home': (BuildContext context) => HomePage(themeProvider),
                 'info': (BuildContext context) => InfoPage(_version),
+                'settings': (BuildContext context) => SettingsPage(),
               },
               onUnknownRoute: (settings) {
                 return MaterialPageRoute(
