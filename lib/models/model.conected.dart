@@ -203,6 +203,13 @@ class ConectedModel extends Model {
             prefix: res[5],
             vence: int.parse(res[res.length == 13 ? 11 : 7]));
       }
+      if (res.length == 11) {
+        _datos = Datos(
+            valor: double.parse(res[4]),
+            plan: _datos.plan,
+            prefix: res[5],
+            vence: int.parse(res[9]));
+      }
     }
 
     _pref.save("datos", _datos);
@@ -222,7 +229,7 @@ class ConectedModel extends Model {
     print("Bono: $ussdResponseMessage2");
 
     List<String> resBono = ussdResponseMessage2.split('Bono->vence:');
-    if (resBono.length > 0) {
+    if (resBono.length > 1) {
       String bono = resBono[1].replaceAll('->', ' vence: ');
       bono = bono.replaceFirst(' ', '');
       _bono = Bono(valor: bono);

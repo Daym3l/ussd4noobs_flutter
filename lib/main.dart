@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:scoped_model/scoped_model.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ussd4noobs/models/model.main.dart';
 import 'package:ussd4noobs/pages/page.home.dart';
 import 'package:ussd4noobs/pages/page.info.dart';

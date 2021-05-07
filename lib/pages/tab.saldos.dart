@@ -13,7 +13,7 @@ class TabSaldos extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
-        padding: EdgeInsets.fromLTRB(25, 20, 25, 25),
+        padding: EdgeInsets.fromLTRB(15, 20, 15, 25),
         child: Container(
           width: MediaQuery.of(context).size.width,
           child: ScopedModelDescendant<MainModel>(
@@ -23,7 +23,7 @@ class TabSaldos extends StatelessWidget {
                 children: [
                   FormatSaldo(model.SaldoPrincipal.toString()),
                   Container(
-                    padding: EdgeInsets.fromLTRB(50, 0, 50, 0),
+                    padding: EdgeInsets.fromLTRB(40, 0, 40, 0),
                     width: MediaQuery.of(context).size.width,
                     child: Column(
                       children: [
