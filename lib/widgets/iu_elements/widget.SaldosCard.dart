@@ -41,8 +41,10 @@ class SaldosCard extends StatelessWidget {
           final snackBar = SnackBar(
             elevation: 6.0,
             backgroundColor: ussd_ErrorColor,
-            content:
-                Text('Error al ejecutar código MMI. Intentelo nuevamente.'),
+            content: Text(
+              'Error al ejecutar código MMI. Intentelo nuevamente.',
+              style: TextStyle(color: Colors.white),
+            ),
           );
           ScaffoldMessenger.of(context).showSnackBar(snackBar);
         }

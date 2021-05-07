@@ -56,7 +56,9 @@ class TabSaldos extends StatelessWidget {
                                   elevation: 6.0,
                                   backgroundColor: ussd_ErrorColor,
                                   content: Text(
-                                      'Error al ejecutar código MMI. Intentelo nuevamente.'),
+                                    'Error al ejecutar código MMI. Intentelo nuevamente.',
+                                    style: TextStyle(color: Colors.white),
+                                  ),
                                 );
                                 ScaffoldMessenger.of(context)
                                     .showSnackBar(snackBar);
