@@ -13,7 +13,7 @@ class _TabPlanesState extends State<TabPlanes> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
-        padding: EdgeInsets.fromLTRB(20, 25, 20, 25),
+        padding: EdgeInsets.fromLTRB(15, 25, 15, 25),
         child: Container(
           width: MediaQuery.of(context).size.width,
           child: Column(
