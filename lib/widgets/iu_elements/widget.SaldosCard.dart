@@ -103,7 +103,7 @@ class SaldosCard extends StatelessWidget {
                 TextSpan(
                   text: ' $prefix',
                   style: TextStyle(
-                      color: Colors.grey,
+                      color: Colors.grey[600],
                       fontWeight: FontWeight.bold,
                       fontSize: 14),
                 )

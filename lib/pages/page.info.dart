@@ -12,7 +12,7 @@ class InfoPage extends StatefulWidget {
 }
 
 class _InfoPage extends State<InfoPage> {
-  String version;
+  String version = "";
   final String _url = 'https://www.apklis.cu/application/dev.mad.ussd4etecsa';
   final Uri _emailLaunchUri = Uri(
       scheme: 'mailto',
