@@ -9,8 +9,9 @@ class SubtitleText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style:
-          TextStyle(fontSize: texySize, color: Theme.of(context).accentColor),
+      style: TextStyle(
+          fontSize: texySize,
+          color: Theme.of(context).textTheme.subtitle1.color),
     );
   }
 }

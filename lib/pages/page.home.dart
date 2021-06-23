@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ussd4noobs/pages/tab.planes.dart';
-import 'package:ussd4noobs/pages/tab.saldos.dart';
+import 'package:ussd4noobs/pages/Saldos.dart';
 import 'package:ussd4noobs/pages/tab.operaciones.dart';
 import 'package:ussd4noobs/theme/theme.provider.dart';
 import 'package:ussd4noobs/widgets/iu_elements/widget.Menu.dart';
@@ -31,31 +31,12 @@ class HomePage extends StatelessWidget {
                   }),
               Menu()
             ],
-            bottom: TabBar(
-              indicatorColor: Theme.of(context).accentColor,
-              tabs: [
-                Tab(
-                  icon: Icon(Icons.monetization_on_outlined),
-                  text: 'Saldos',
-                ),
-                Tab(
-                  icon: Icon(Icons.storefront_rounded),
-                  text: 'Planes',
-                ),
-                Tab(
-                  icon: Icon(Icons.device_hub_sharp),
-                  text: 'Operaciones',
-                )
-              ],
-            ),
           ),
           body: new GestureDetector(
             onTap: () {
               FocusScope.of(context).unfocus();
             },
-            child: TabBarView(
-              children: [TabSaldos(), TabPlanes(), TabTraferencia()],
-            ),
+            child: TabSaldos(),
           )),
     );
   }

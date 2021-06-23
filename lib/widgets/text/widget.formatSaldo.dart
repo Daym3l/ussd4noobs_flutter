@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ussd4noobs/helpers/helper.colors.dart';
 
 class FormatSaldo extends StatelessWidget {
   final String price;
@@ -16,7 +15,7 @@ class FormatSaldo extends StatelessWidget {
               style: TextStyle(
                 fontFamily: 'Bebas',
                 fontSize: 20,
-                color: ussd_PrimaryColor,
+                color: Theme.of(context).textTheme.headline1.color,
               )),
           SizedBox(
             width: 2,
@@ -24,10 +23,10 @@ class FormatSaldo extends StatelessWidget {
           Text(
             price,
             style: TextStyle(
-                color: ussd_PrimaryColor,
-                fontSize: 50,
-                fontFamily: 'Bebas',
-                fontWeight: FontWeight.bold),
+              color: Theme.of(context).textTheme.headline1.color,
+              fontSize: 50,
+              fontFamily: 'Bebas',
+            ),
           )
         ],
       ),
