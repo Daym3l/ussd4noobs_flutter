@@ -25,7 +25,6 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.2 
   package_info: ^2.0.0
-  percent_indicator: ^2.1.9+1
   mask_text_input_formatter: ^1.2.1
   scoped_model: ^1.1.0
   ussd_service: ^0.1.0+4

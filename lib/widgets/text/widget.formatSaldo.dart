@@ -24,7 +24,7 @@ class FormatSaldo extends StatelessWidget {
             price,
             style: TextStyle(
               color: Theme.of(context).textTheme.headline1.color,
-              fontSize: 50,
+              fontSize: 40,
               fontFamily: 'Bebas',
             ),
           )

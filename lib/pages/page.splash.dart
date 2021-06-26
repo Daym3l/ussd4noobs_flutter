@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:ussd4noobs/helpers/helper.colors.dart';
 import 'package:ussd4noobs/widgets/text/widget.copyright.dart';
 import 'package:ussd4noobs/widgets/text/widget.AppTitleFormat.dart';
 import 'package:package_info/package_info.dart';
@@ -16,6 +15,7 @@ class SplashPage extends StatefulWidget {
 
 class _Splash extends State<SplashPage> {
   String _version = "";
+  bool _isDark = false;
   @override
   void initState() {
     super.initState();
@@ -30,15 +30,20 @@ class _Splash extends State<SplashPage> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     prefs.setString('version', packageInfo.version);
+
     setState(() {
       _version = packageInfo.version;
+    });
+
+    setState(() {
+      _isDark = prefs.getBool("THEMESTATUS") ?? false;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ussd_PrimaryColor,
+      backgroundColor: Theme.of(context).primaryColor,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -49,7 +54,9 @@ class _Splash extends State<SplashPage> {
                 Center(
                   child: Image(
                     height: 200.0,
-                    image: AssetImage('assets/images/ic_logo.png'),
+                    image: _isDark
+                        ? AssetImage('assets/images/ic_logo.png')
+                        : AssetImage('assets/images/ic_logo.png'),
                   ),
                 ),
                 Center(

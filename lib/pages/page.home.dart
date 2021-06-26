@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ussd4noobs/pages/tab.planes.dart';
-import 'package:ussd4noobs/pages/Saldos.dart';
+import 'package:ussd4noobs/pages/page.saldos.dart';
 import 'package:ussd4noobs/pages/tab.operaciones.dart';
 import 'package:ussd4noobs/theme/theme.provider.dart';
 import 'package:ussd4noobs/widgets/iu_elements/widget.Menu.dart';
@@ -22,21 +22,23 @@ class HomePage extends StatelessWidget {
             centerTitle: true,
             title: AppBarTitle(),
             actions: [
-              IconButton(
-                  icon: Icon(themeProvider.darkTheme
-                      ? Icons.bedtime_rounded
-                      : Icons.wb_sunny_rounded),
-                  onPressed: () {
-                    themeProvider.darkTheme = !themeProvider.darkTheme;
-                  }),
-              Menu()
+              Padding(
+                padding: EdgeInsets.only(right: 8),
+                child: IconButton(
+                    icon: Icon(themeProvider.darkTheme
+                        ? Icons.bedtime_rounded
+                        : Icons.wb_sunny_rounded),
+                    onPressed: () {
+                      themeProvider.darkTheme = !themeProvider.darkTheme;
+                    }),
+              )
             ],
           ),
           body: new GestureDetector(
             onTap: () {
               FocusScope.of(context).unfocus();
             },
-            child: TabSaldos(),
+            child: SaldosPage(),
           )),
     );
   }

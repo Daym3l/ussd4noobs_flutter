@@ -1,20 +1,28 @@
 import 'package:flutter/material.dart';
 
-const ussd_PrimaryColor = const Color(0xFF00968A);
-const ussd_PrimaryVariant = const Color(0xFF00796D);
-const ussd_PrimaryLight = const Color(0xFF52c7ba);
-const ussd_PrimaryText = const Color(0xFF000000);
-const ussd_PrimarySubText = const Color(0xFF9e9e9e);
+const ussd_PrimaryColor = const Color(0xFF212529);
+const ussd_PrimaryVariant = const Color(0xFFF8F9FA);
 
-const ussd_SecondaryColor = const Color(0xFF1976d2);
-const ussd_SecondaryVariant = const Color(0xFF004ba0);
-const ussd_SecondaryLight = const Color(0xFF63a4ff);
-const ussd_SecondaryText = const Color(0xFFFFFFFF);
+const ussd_PrimaryText = const Color(0xFF212529);
+const ussd_PrimaryTextVariant = const Color(0xFFF8F9FA);
 
-const ussd_ErrorColor = const Color(0xFF96000C);
-const ussd_ErrorTextColor = const Color(0xFFFFFFFF);
-const ussd_AccentColor = const Color(0xFF004D42);
+const ussd_PrimarySubText = const Color(0xFF343A40);
+const ussd_PrimarySubTextVariant = const Color(0xFFE9ECEF);
 
-const ussd_BackgroundColor = const Color(0xFFFFFFFF);
-const ussd_SurfaceColor = const Color(0xFFE0F2F1);
-const ussd_divider = const Color(0x7E757575);
+const ussd_SecondaryColor = const Color(0xFF495057);
+const ussd_SecondaryVariant = const Color(0xFFDEE2E6);
+
+const ussd_SecondaryText = const Color(0xFF495057);
+const ussd_SecondaryTextVariant = const Color(0xFFDEE2E6);
+
+const ussd_ErrorColor = const Color(0xFFef233c);
+const ussd_ErrorTextColor = const Color(0xFFF8F9FA);
+
+const ussd_AccentColor = const Color(0xFF343A40);
+const ussd_AccentColorVariant = const Color(0xFFE9ECEF);
+
+const ussd_BackgroundColor = const Color(0xFFF8F9FA);
+const ussd_SurfaceColor = const Color(0xFFF8F9FA);
+
+const ussd_divider = const Color(0xff6C757D);
+const ussd_dividerVariant = const Color(0xffDEE2E6);
