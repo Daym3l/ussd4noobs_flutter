@@ -8,6 +8,7 @@ import 'package:ussd4noobs/domains/Datos.dart';
 import 'package:ussd4noobs/domains/Saldo.dart';
 import 'package:ussd4noobs/domains/Sms.dart';
 import 'package:ussd4noobs/domains/Voz.dart';
+import 'package:ussd4noobs/helpers/helper.funtions.dart';
 
 import 'package:ussd4noobs/helpers/helper.sharedPref.dart';
 import 'package:ussd_service/ussd_service.dart';
@@ -187,27 +188,39 @@ class ConectedModel extends Model {
     List<String> res = ussdResponseMessage.split(" ");
 
     if (res[4] == "adquirir" && res[5] == "adquirir") {
-      _datos = Datos(valor: 0.0, plan: 0.0, vence: 0, prefix: 'MB');
+      _datos = Datos(
+          valor: 0.0,
+          valorLTE: 0,
+          plan: 0.0,
+          vence: 0,
+          prefix: 'MB',
+          prefixLTE: '');
     } else {
       if (res.length == 8 || res.length == 12) {
         _datos = Datos(
             valor: double.parse(res[3]),
+            valorLTE: res.length == 13 ? double.parse(res[5]) : 0,
             plan: _datos.plan,
             prefix: res[4],
+            prefixLTE: res.length == 13 ? res[6] : "",
             vence: int.parse(res[6]));
       }
       if (res.length == 9 || res.length == 13) {
         _datos = Datos(
             valor: double.parse(res[4]),
+            valorLTE: res.length == 13 ? double.parse(res[7]) : 0,
             plan: _datos.plan,
             prefix: res[5],
+            prefixLTE: res.length == 13 ? res[8] : "",
             vence: int.parse(res[res.length == 13 ? 11 : 7]));
       }
       if (res.length == 11) {
         _datos = Datos(
             valor: double.parse(res[4]),
+            valorLTE: 0,
             plan: _datos.plan,
             prefix: res[5],
+            prefixLTE: '',
             vence: int.parse(res[9]));
       }
     }
@@ -218,7 +231,12 @@ class ConectedModel extends Model {
   Future setSaldoPrincipal(
       String ussdResponseMessage, int subscriptionId) async {
     List<String> res = ussdResponseMessage.split(" ");
-    _saldo = Saldo(saldo: double.parse(res[1]), vencimiento: res[6]);
+    String vence = res[6];
+    if (res.length == 16 || res.length == 20) {
+      vence = res.length == 20 ? res[19] : res[15];
+    }
+    _saldo = Saldo(saldo: double.parse(res[1]), vencimiento: vence);
+
     _pref.save("saldo", _saldo);
 
     String ussdResponseMessage2 = await UssdService.makeRequest(
@@ -274,6 +292,12 @@ class BonosModel extends ConectedModel {
 
 class DatosModel extends ConectedModel {
   get DatosPrincipal {
+    if (_datos.valorLTE != null && _datos.valorLTE > 0) {
+      double res =
+          HelperFunctions.convertToGB(_datos.valorLTE, _datos.prefixLTE) +
+              HelperFunctions.convertToGB(_datos.valor, _datos.prefix);
+      return double.parse(res.toStringAsFixed(2));
+    }
     return _datos.valor;
   }
 
@@ -286,7 +310,10 @@ class DatosModel extends ConectedModel {
   }
 
   get PrefixDatos {
-    return _datos.prefix;
+    if (_datos.prefixLTE != null && _datos.prefixLTE.isEmpty) {
+      return _datos.prefix;
+    }
+    return 'GB';
   }
 
   getDatos() async {
