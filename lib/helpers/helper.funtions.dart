@@ -6,8 +6,8 @@ class HelperFunctions {
     return Color(int.parse('FF$hexCode', radix: 16));
   }
 
-  static double convertToGB(String value, String prefix) {
-    double convert = double.parse(value);
+  static double convertToGB(double value, String prefix) {
+    double convert = value;
     double datos;
     switch (prefix) {
       case 'MB':

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ussd4noobs/widgets/iu_elements/widget.DatosTiles.dart';
+import 'package:ussd4noobs/widgets/iu_elements/widget.Planes.dart';
 import 'package:ussd4noobs/widgets/iu_elements/widget.SmsTiles.dart';
 import 'package:ussd4noobs/widgets/iu_elements/widget.VozTiles.dart';
 
@@ -22,7 +23,9 @@ class _TabPlanesState extends State<TabPlanes> {
               Padding(padding: EdgeInsets.only(top: 15)),
               VozTiles(),
               Padding(padding: EdgeInsets.only(top: 15)),
-              SmsTiles()
+              SmsTiles(),
+              Padding(padding: EdgeInsets.only(top: 15)),
+              PlanesTiles()
             ],
           ),
         ),
