@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ussd4noobs/helpers/helper.funtions.dart';
 import 'package:ussd4noobs/widgets/iu_elements/widget.PlanTile.dart';
 import 'package:ussd4noobs/widgets/text/wideget.Title.dart';
 import 'package:ussd4noobs/widgets/text/wideget.subtitle.dart';
@@ -8,13 +7,15 @@ class PlanesTiles extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ExpansionTile(
-      title: TitleText('Plan de Datos + Min + SMS', 18, Colors.red),
+      title: TitleText(
+          'Plan de Datos + Min + SMS', 18, Theme.of(context).accentColor),
       subtitle: SubtitleText(
-          'Todos los planes vienen con bono de 300 MB Nacionales.', 12),
+          'Los Planes Combinados. Ahora por el mismo precio tienes Datos + Minutos + SMS.',
+          12),
       leading: Icon(
         Icons.all_inclusive_sharp,
-        color: Colors.red,
-        size: 28,
+        color: Theme.of(context).accentColor,
+        size: 35,
       ),
       children: [
         Divider(

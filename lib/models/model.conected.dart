@@ -277,7 +277,11 @@ class SaldosModel extends ConectedModel {
 
 class BonosModel extends ConectedModel {
   get BonoPrincipal {
-    return _bono.valor;
+    List<String> resBono = _bono.valor.split(" ");
+    if (resBono[0] == "Datos.cu") {
+      return resBono[1];
+    }
+    return "";
   }
 
   getBono() async {

@@ -8,14 +8,14 @@ class DatosTiles extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ExpansionTile(
-      title: TitleText('Plan de Datos', 18, Colors.orange),
+      title: TitleText('Plan de Datos', 18, Theme.of(context).accentColor),
       subtitle: SubtitleText(
           'Comprar un paquete que datos provee a sus dispositivo movil de conectividad a Internet.',
           12),
       leading: Icon(
         Icons.wifi,
-        color: Colors.orange,
-        size: 28,
+        color: Theme.of(context).accentColor,
+        size: 35,
       ),
       children: [
         Divider(

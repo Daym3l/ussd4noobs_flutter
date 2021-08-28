@@ -7,14 +7,14 @@ class VozTiles extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ExpansionTile(
-      title: TitleText('Plan de Voz', 18, Colors.blue),
+      title: TitleText('Plan de Voz', 18, Theme.of(context).accentColor),
       subtitle: SubtitleText(
           'Elija la oferta de minutos más conveniente para realizar llamadas nacionales durante el horario normal.',
           12),
       leading: Icon(
         Icons.mic,
-        color: Colors.blue,
-        size: 30,
+        color: Theme.of(context).accentColor,
+        size: 35,
       ),
       children: [
         Divider(

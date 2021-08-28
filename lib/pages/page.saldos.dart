@@ -3,6 +3,7 @@ import 'package:scoped_model/scoped_model.dart';
 import 'package:ussd4noobs/helpers/helper.colors.dart';
 import 'package:ussd4noobs/models/model.main.dart';
 import 'package:ussd4noobs/widgets/iu_elements/widget.Datos.dart';
+import 'package:ussd4noobs/widgets/iu_elements/widget.Nacional.dart';
 import 'package:ussd4noobs/widgets/iu_elements/widget.Sms.dart';
 import 'package:ussd4noobs/widgets/iu_elements/widget.Spinner.dart';
 import 'package:ussd4noobs/widgets/iu_elements/widget.Voz.dart';
@@ -54,7 +55,7 @@ class SaldosPage extends StatelessWidget {
                       children: [
                         Container(
                           width: MediaQuery.of(context).size.width,
-                          height: MediaQuery.of(context).size.height,
+                          height: MediaQuery.of(context).size.height - 250,
                         ),
                         DatosWidget(
                           model,
@@ -67,7 +68,14 @@ class SaldosPage extends StatelessWidget {
                         VozWidget(model, model.VozPrincipal, model.VozPlan,
                             model.VenceVozDias, model.getLoadingVoz, 'Min.'),
                         SmsWidget(model, model.SmsPrincipal, model.SmsPlan,
-                            model.VenceSmsDias, model.getLoadingSms, 'SMS')
+                            model.VenceSmsDias, model.getLoadingSms, 'SMS'),
+                        NacionalWidget(
+                            model,
+                            model.BonoPrincipal,
+                            model.SmsPlan,
+                            model.VenceSmsDias,
+                            model.getLoadingSms,
+                            'MB')
                       ],
                     ),
                   )

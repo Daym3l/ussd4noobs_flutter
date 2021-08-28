@@ -7,14 +7,14 @@ class SmsTiles extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ExpansionTile(
-      title: TitleText('Plan de Sms', 18, Colors.green),
+      title: TitleText('Plan de Sms', 18, Theme.of(context).accentColor),
       subtitle: SubtitleText(
           'Si prefiere usar los mensajes (SMS) para comunicarse, elija uno de los planes disponibles.',
           12),
       leading: Icon(
         Icons.sms,
-        color: Colors.green,
-        size: 30,
+        color: Theme.of(context).accentColor,
+        size: 35,
       ),
       children: [
         Divider(

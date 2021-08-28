@@ -4,6 +4,8 @@ import 'package:scoped_model/scoped_model.dart';
 import 'package:ussd4noobs/models/model.main.dart';
 import 'package:ussd4noobs/pages/page.home.dart';
 import 'package:ussd4noobs/pages/page.info.dart';
+import 'package:ussd4noobs/pages/page.operaciones.dart';
+import 'package:ussd4noobs/pages/page.planes.dart';
 import 'package:ussd4noobs/pages/page.settings.dart';
 import 'package:ussd4noobs/pages/page.splash.dart';
 import 'package:ussd4noobs/theme/theme.provider.dart';
@@ -58,6 +60,8 @@ class _MyApp extends State<MyApp> {
                 '/': (BuildContext context) => SplashPage(),
                 'home': (BuildContext context) => HomePage(themeProvider),
                 'info': (BuildContext context) => InfoPage(),
+                'planes': (BuildContext context) => PlanesPage(),
+                'operaciones': (BuildContext context) => TransferenciaPage(),
                 'settings': (BuildContext context) => SettingsPage(),
               },
               onUnknownRoute: (settings) {
