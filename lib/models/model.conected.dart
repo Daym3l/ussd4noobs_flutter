@@ -186,7 +186,7 @@ class ConectedModel extends Model {
 
   void setDatosPrincipal(String ussdResponseMessage) async {
     List<String> res = ussdResponseMessage.split(" ");
-
+    print(res);
     if (res[4] == "adquirir" && res[5] == "adquirir") {
       _datos = Datos(
           valor: 0.0,
@@ -196,7 +196,15 @@ class ConectedModel extends Model {
           prefix: 'MB',
           prefixLTE: '');
     } else {
-      if (res.length == 8 || res.length == 12) {
+      if (res.length == 12) {
+        _datos = Datos(
+            valor: double.parse(res[4]),
+            valorLTE: double.parse(res[7]),
+            plan: _datos.plan,
+            prefix: res[5],
+            prefixLTE: res[8],
+            vence: 0);
+      } else if (res.length == 8 || res.length == 12) {
         _datos = Datos(
             valor: double.parse(res[3]),
             valorLTE: res.length == 13 ? double.parse(res[5]) : 0,
