@@ -28,8 +28,7 @@ class TabSaldos extends StatelessWidget {
                     child: Column(
                       children: [
                         SubtitleText(
-                            'Línea activa hasta el ${model.VencePrincipal}.',
-                            14)
+                            'Línea activa hasta el ${model.VencePrincipal}', 14)
                       ],
                     ),
                   ),
