@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ussd4noobs/widgets/text/wideget.subtitle.dart';
+import 'package:ussd4noobs/widgets/text/widget.appBarTitle.dart';
 
 class DrawerWidget extends StatelessWidget {
   @override
@@ -9,7 +10,7 @@ class DrawerWidget extends StatelessWidget {
         children: [
           AppBar(
             automaticallyImplyLeading: false,
-            title: Text('USSD4NOOBS'),
+            title: AppBarTitle(),
           ),
           ListTile(
             leading: Icon(
@@ -32,16 +33,16 @@ class DrawerWidget extends StatelessWidget {
             },
           ),
           Divider(),
-          ListTile(
-            leading: Icon(
-              Icons.settings,
-              color: Theme.of(context).primaryColor,
-            ),
-            title: SubtitleTextVariant('Configuración', 18),
-            onTap: () {
-              Navigator.pushNamed(context, 'settings');
-            },
-          ),
+          // ListTile(
+          //   leading: Icon(
+          //     Icons.settings,
+          //     color: Theme.of(context).primaryColor,
+          //   ),
+          //   title: SubtitleTextVariant('Configuración', 18),
+          //   onTap: () {
+          //     Navigator.pushNamed(context, 'settings');
+          //   },
+          // ),
           ListTile(
             leading: Icon(
               Icons.info,

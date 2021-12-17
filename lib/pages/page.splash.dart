@@ -55,7 +55,7 @@ class _Splash extends State<SplashPage> {
                   child: Image(
                     height: 200.0,
                     image: _isDark
-                        ? AssetImage('assets/images/ic_logo.png')
+                        ? AssetImage('assets/images/ic_logo_white.png')
                         : AssetImage('assets/images/ic_logo.png'),
                   ),
                 ),

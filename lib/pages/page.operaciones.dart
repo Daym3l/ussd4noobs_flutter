@@ -60,6 +60,12 @@ class _TransferenciaPageState extends State<TransferenciaPage> {
         body: SingleChildScrollView(
           child: Column(
             children: [
+              Padding(padding: EdgeInsets.only(top: 15)),
+              Icon(
+                Icons.local_atm_rounded,
+                color: Theme.of(context).accentColor,
+                size: 80,
+              ),
               Stack(
                 children: [
                   Padding(

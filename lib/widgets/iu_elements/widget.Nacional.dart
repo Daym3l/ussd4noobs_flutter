@@ -22,7 +22,7 @@ class NacionalWidget extends SaldoWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      right: 2,
+      right: MediaQuery.of(context).size.width / 8 - 45,
       top: 185,
       child: GestureDetector(
         key: UniqueKey(),

@@ -9,7 +9,6 @@ import 'package:ussd4noobs/domains/Saldo.dart';
 import 'package:ussd4noobs/domains/Sms.dart';
 import 'package:ussd4noobs/domains/Voz.dart';
 import 'package:ussd4noobs/helpers/helper.funtions.dart';
-
 import 'package:ussd4noobs/helpers/helper.sharedPref.dart';
 import 'package:ussd_service/ussd_service.dart';
 import 'package:sim_data/sim_data.dart';
@@ -17,7 +16,13 @@ import 'package:sim_data/sim_data.dart';
 class ConectedModel extends Model {
   Saldo _saldo = Saldo(saldo: 0.0, vencimiento: '1/1/2021');
   Bono _bono = Bono(valor: "Sin Bonificación.");
-  Datos _datos = Datos(valor: 0.0, plan: 0.0, vence: 0, prefix: 'MB');
+  Datos _datos = Datos(
+      valor: 0.0,
+      plan: 0.0,
+      vence: 0,
+      prefix: 'MB',
+      prefixLTE: '',
+      valorLTE: 0);
   Voz _voz = Voz(valor: '00:00:00', plan: 0.0, vence: 0);
   Sms _sms = Sms(valor: '0', plan: 0.0, vence: 0);
 
@@ -234,6 +239,9 @@ class ConectedModel extends Model {
     String vence = res[6];
     if (res.length == 16 || res.length == 20) {
       vence = res.length == 20 ? res[19] : res[15];
+    }
+    if (res.length == 12) {
+      vence = res[11];
     }
     _saldo = Saldo(saldo: double.parse(res[1]), vencimiento: vence);
 

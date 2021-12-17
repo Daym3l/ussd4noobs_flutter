@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ussd4noobs/helpers/helper.colors.dart';
 
 class AppTitleFormat extends StatelessWidget {
   final String title;

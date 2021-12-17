@@ -51,7 +51,8 @@ class SaldosPage extends StatelessWidget {
                   Container(
                     width: MediaQuery.of(context).size.width,
                     child: Stack(
-                      alignment: Alignment.topCenter,
+                      alignment: AlignmentDirectional.topCenter,
+                      fit: StackFit.loose,
                       children: [
                         Container(
                           width: MediaQuery.of(context).size.width,
@@ -69,13 +70,8 @@ class SaldosPage extends StatelessWidget {
                             model.VenceVozDias, model.getLoadingVoz, 'Min.'),
                         SmsWidget(model, model.SmsPrincipal, model.SmsPlan,
                             model.VenceSmsDias, model.getLoadingSms, 'SMS'),
-                        NacionalWidget(
-                            model,
-                            model.BonoPrincipal,
-                            model.SmsPlan,
-                            model.VenceSmsDias,
-                            model.getLoadingSms,
-                            'MB')
+                        NacionalWidget(model, model.BonoPrincipal,
+                            model.SmsPlan, model.VenceSmsDias, false, 'MB')
                       ],
                     ),
                   )

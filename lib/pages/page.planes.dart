@@ -27,6 +27,7 @@ class _PlanesPageState extends State<PlanesPage> {
                   Padding(padding: EdgeInsets.only(top: 15)),
                   Icon(
                     Icons.shopping_bag,
+                    color: Theme.of(context).accentColor,
                     size: 80,
                   ),
                   Padding(

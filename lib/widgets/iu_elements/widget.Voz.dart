@@ -23,7 +23,7 @@ class VozWidget extends SaldoWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      right: 45,
+      right: MediaQuery.of(context).size.width / 8 - 5,
       top: 245,
       child: GestureDetector(
         key: UniqueKey(),

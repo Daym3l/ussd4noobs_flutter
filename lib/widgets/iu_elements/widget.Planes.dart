@@ -22,8 +22,8 @@ class PlanesTiles extends StatelessWidget {
           color: Theme.of(context).dividerColor,
         ),
         PlanTile(
-          title: 'Plan Básico',
-          subtitle: '125 CUP + 600MB + 800MB LTE + 15 MIN + 20 SMS',
+          title: 'Plan Básico - 110 CUP',
+          subtitle: '600MB + 800MB LTE + 15 MIN + 20 SMS',
           type: 'plan',
           plan: 0,
           ussdCode: "*133*5*1#",
@@ -33,8 +33,8 @@ class PlanesTiles extends StatelessWidget {
           color: Theme.of(context).dividerColor,
         ),
         PlanTile(
-          title: 'Plan Medio',
-          subtitle: '250 CUP + 1.5GB + 2GB LTE + 35 MIN + 40 SMS',
+          title: 'Plan Medio - 250 CUP',
+          subtitle: '1.5GB + 2GB LTE + 35 MIN + 40 SMS',
           type: 'plan',
           plan: 0,
           ussdCode: "*133*5*2#",
@@ -44,8 +44,8 @@ class PlanesTiles extends StatelessWidget {
           color: Theme.of(context).dividerColor,
         ),
         PlanTile(
-          title: 'Plan Extra',
-          subtitle: '500 CUP + 3.5GB + 4.5GB LTE + 75 MIN + 80 SMS',
+          title: 'Plan Extra - 500 CUP',
+          subtitle: '3.5GB + 4.5GB LTE + 75 MIN + 80 SMS',
           type: 'plan',
           plan: 0,
           ussdCode: "*133*5*3#",

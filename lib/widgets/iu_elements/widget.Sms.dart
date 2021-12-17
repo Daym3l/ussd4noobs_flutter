@@ -23,7 +23,7 @@ class SmsWidget extends SaldoWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      left: 50,
+      left: MediaQuery.of(context).size.width / 8 - 8,
       top: 235,
       child: GestureDetector(
         key: UniqueKey(),
