@@ -170,7 +170,7 @@ class ConectedModel extends Model {
   void setSmsPrincipal(String ussdResponseMessage) {
     List<String> res = ussdResponseMessage.split(" ");
 
-    if (res[2] == "adquirir") {
+    if (res[2] == "adquirir" || res[2] == "adquirir") {
       _sms = Sms(valor: '0', plan: 0, vence: 0);
     } else {
       _sms = Sms(valor: res[3], plan: _sms.plan, vence: int.parse(res[7]));
@@ -181,7 +181,7 @@ class ConectedModel extends Model {
   void setVozPrincipal(String ussdResponseMessage) {
     List<String> res = ussdResponseMessage.split(" ");
 
-    if (res[2] == "adquirir") {
+    if (res[2] == "adquirir" || res[2] == "dispone") {
       _voz = Voz(valor: '00:00:00', plan: 0.0, vence: 0);
     } else {
       _voz = Voz(valor: res[3], plan: 0.0, vence: int.parse(res[7]));
