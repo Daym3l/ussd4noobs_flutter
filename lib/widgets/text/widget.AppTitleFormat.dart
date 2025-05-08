@@ -13,9 +13,9 @@ class AppTitleFormat extends StatelessWidget {
       child: Text(
         title,
         style: TextStyle(
-          fontSize: titleSize,
-          fontFamily: 'Fressia',
-        ),
+            fontSize: titleSize,
+            fontFamily: 'Fressia',
+            color: Theme.of(context).textTheme.bodyText1.color),
         textAlign: TextAlign.center,
       ),
     );

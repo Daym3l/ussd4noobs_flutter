@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ussd4noobs/helpers/helper.funtions.dart';
 import 'package:ussd4noobs/widgets/iu_elements/widget.PlanTile.dart';
 import 'package:ussd4noobs/widgets/text/wideget.Title.dart';
 import 'package:ussd4noobs/widgets/text/wideget.subtitle.dart';
@@ -8,21 +7,23 @@ class PlanesTiles extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ExpansionTile(
-      title: TitleText('Plan de Datos + Min + SMS', 18, Colors.red),
+      title: TitleText(
+          'Plan de Datos + Min + SMS', 18, Theme.of(context).accentColor),
       subtitle: SubtitleText(
-          'Todos los planes vienen con bono de 300 MB Nacionales.', 12),
+          'Los Planes Combinados. Ahora por el mismo precio tienes Datos + Minutos + SMS.',
+          12),
       leading: Icon(
         Icons.all_inclusive_sharp,
-        color: Colors.red,
-        size: 28,
+        color: Theme.of(context).accentColor,
+        size: 35,
       ),
       children: [
         Divider(
           color: Theme.of(context).dividerColor,
         ),
         PlanTile(
-          title: 'Plan Básico',
-          subtitle: '125 CUP + 600MB + 800MB LTE + 15 MIN + 20 SMS',
+          title: 'Plan Básico - 110 CUP',
+          subtitle: '600MB + 800MB LTE + 15 MIN + 20 SMS',
           type: 'plan',
           plan: 0,
           ussdCode: "*133*5*1#",
@@ -32,8 +33,8 @@ class PlanesTiles extends StatelessWidget {
           color: Theme.of(context).dividerColor,
         ),
         PlanTile(
-          title: 'Plan Medio',
-          subtitle: '250 CUP + 1.5GB + 2GB LTE + 35 MIN + 40 SMS',
+          title: 'Plan Medio - 250 CUP',
+          subtitle: '1.5GB + 2GB LTE + 35 MIN + 40 SMS',
           type: 'plan',
           plan: 0,
           ussdCode: "*133*5*2#",
@@ -43,8 +44,8 @@ class PlanesTiles extends StatelessWidget {
           color: Theme.of(context).dividerColor,
         ),
         PlanTile(
-          title: 'Plan Extra',
-          subtitle: '500 CUP + 3.5GB + 4.5GB LTE + 75 MIN + 80 SMS',
+          title: 'Plan Extra - 500 CUP',
+          subtitle: '3.5GB + 4.5GB LTE + 75 MIN + 80 SMS',
           type: 'plan',
           plan: 0,
           ussdCode: "*133*5*3#",

@@ -8,8 +8,8 @@ class AppBarTitle extends StatelessWidget {
     return Text(
       'USSD4NOOBS',
       style: TextStyle(
-        fontFamily: 'Fressia',
-      ),
+          fontFamily: 'Fressia',
+          color: Theme.of(context).textTheme.headline1.color),
       textAlign: TextAlign.center,
     );
   }
